@@ -280,8 +280,8 @@ OptionMenu "SLL_Style"
 	StaticText ""
 
 	Option "Energy Regeneration", "StyleBonuses", "EnabledOrNot"
-	StaticText "Keeping your Style Rank at B or above will constantly", "White"
-	StaticText "regenerate Chaos Energy, going faster for higher ranks.", "White"
+	StaticText "As long as you have a Style Rank, you'll begin to", "White"
+    StaticText "generate Chaos Energy. Higher ranks generate faster.", "White"
 	StaticText ""
 }
 

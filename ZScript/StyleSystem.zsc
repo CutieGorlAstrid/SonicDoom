@@ -181,7 +181,7 @@ class StyleSystem : EventHandler
         int stylerank = cvar.FindCvar("StyleRank").GetInt();
 
         int start_value = 48;
-        int step = 128;
+        int step = 256;
         int deprecation = start_value + stylerank * step;
 
         if (deprecation_tick > 2) {
@@ -207,7 +207,7 @@ class StyleSystem : EventHandler
         // Obtain Style Rank to sync up
         int style_rank = cvar.FindCvar("StyleRank").GetInt();
 
-        if (style_rank >= 3) {
+        if (style_rank >= 1) {
             GiveStyleRewards(player, style_rank);
         }
     }
@@ -228,23 +228,26 @@ class StyleSystem : EventHandler
 			case 8:
 			case 7:
 				delay = 1;
-                multiplier = 2;
+                multiplier = 4;
 				break;
 			case 6:
 				delay = 1;
-                multiplier = 1;
+                multiplier = 2;
 				break;
 			case 5:
-				delay = 2;
-                multiplier = 2;
+				delay = 1;
+                multiplier = 1;
 				break;
 			case 4:
 				delay = 2;
-                multiplier = 1;
+                multiplier = 2;
 				break;
 			case 3:
+				delay = 2;
+                multiplier = 1;
+				break;
 			default:
-				delay = 3;
+                delay = 3;
                 multiplier = 1;
 				break;
 		}
