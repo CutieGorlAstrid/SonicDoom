@@ -69,7 +69,7 @@ class StyleSystem : EventHandler
 
 		/* Base increment */
 		if (PlayerIsResponsible) {
-			scorebonus += SCORE_THRESHOLD / random(10, 12);
+			scorebonus += SCORE_THRESHOLD / random(10, 12) + e.damage * 36;
 		}
 		else {
 			if (stylerank >= 1) {
@@ -79,8 +79,6 @@ class StyleSystem : EventHandler
 				return;
 			}
 		}
-
-        scorebonus += e.damage * 48;
 
 		UpdateWeapon();
 
