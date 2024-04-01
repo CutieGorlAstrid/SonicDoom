@@ -69,7 +69,8 @@ class StyleSystem : EventHandler
 
 		/* Base increment */
 		if (PlayerIsResponsible) {
-			scorebonus += SCORE_THRESHOLD / random(10, 12) + e.damage * 36;
+            int damage_bonus = clamp(e.damage * 36, 0, SCORE_THRESHOLD);
+			scorebonus += SCORE_THRESHOLD / random(12, 14) + damage_bonus;
 		}
 		else {
 			if (stylerank >= 1) {
@@ -90,7 +91,7 @@ class StyleSystem : EventHandler
 								   e.DamageType == "Piko" ||
 								   e.DamageType == "SonicPunch";
 
-        int staleness_factor = SCORE_THRESHOLD / 150;
+        int staleness_factor = SCORE_THRESHOLD / 65;
         int staleness = staleness_factor * consecutive_uses;
         staleness *= cvar.FindCvar("StaleMultiplier").GetFloat();
         staleness = clamp(staleness, 0, scorebonus);
@@ -98,16 +99,6 @@ class StyleSystem : EventHandler
 		if (!offhand_attack_used) {
 			scorebonus -= staleness;
 		}
-
-        let used_weapon = ReadyWeapon.GetClassName();
-        bool spread_attack_used = used_weapon == "KineticShotty" ||
-                                  used_weapon == "QuadShotty" ||
-                                  used_weapon == "SpeedyShotgun" ||
-                                  e.DamageType == "SonicPunch";
-
-        if (spread_attack_used) {
-            scorebonus /= 5;
-        }
 
 		score += scorebonus;
 
@@ -180,11 +171,11 @@ class StyleSystem : EventHandler
         PlayerPawn player = players[consoleplayer].mo;
         int stylerank = cvar.FindCvar("StyleRank").GetInt();
 
-        int start_value = 48;
+        int start_value = 64;
         int step = 256;
         int deprecation = start_value + stylerank * step;
 
-        if (deprecation_tick > 2) {
+        if (deprecation_tick > 1) {
             deprecation_tick = 0;
             score -= deprecation;
         }

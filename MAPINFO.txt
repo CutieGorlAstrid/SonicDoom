@@ -37,6 +37,10 @@ DamageType ShadowMelee
 {
 	Factor = 1
 }
+DamageType Shovel
+{
+    Factor = 1
+}
 DamageType Piko
 {
    Factor = 1

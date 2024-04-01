@@ -20,6 +20,14 @@ class ShadowMeleeAtk : Actor
 	}
 }
 
+class ShovelAtk : ShadowMeleeAtk
+{
+    Default
+    {
+        DamageType "Shovel";
+    }
+}
+
 class PikoPuff : Actor
 {
 	Default
