@@ -1,6 +1,6 @@
 gameinfo
 {
-	PlayerClasses = "SonicPlayer", "AmyPlayer", "ClassicSonicPlayer", "ShadowPlayer"
+	PlayerClasses = "SonicPlayer", "SonicPlayer", "SonicPlayer", "SonicPlayer"
 	QuitMessages = "$QUITMSG1", "$QUITMSG2", "$QUITMSG3", "$QUITMSG4", "$QUITMSG5", "$QUITMSG6", "$QUITMSG7", "$QUITMSG8"
 	InfoPage = "ABOUTLL", "MANUAL"
 	TitlePage = "TITLEPIC"
