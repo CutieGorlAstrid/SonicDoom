@@ -82,8 +82,9 @@ script "GoalRing" (void)
 	bool s_rank = a_rank && LevelTime <= ParTime;
     bool x_rank = s_rank && FoundSecrets == TotalSecrets;
 
-    bool extra_credit = !(s_rank || x_rank) && LevelTime <= ParTime;
-    bool a_rank_plus  = a_rank && FoundSecrets == TotalSecrets;
+    bool not_s_or_x = !(s_rank || x_rank);
+    bool extra_credit = not_s_or_x && LevelTime <= ParTime;
+    bool a_rank_plus  = not_s_or_x && a_rank && FoundSecrets == TotalSecrets;
 
 	bool rank_plus = extra_credit || a_rank_plus;
 
