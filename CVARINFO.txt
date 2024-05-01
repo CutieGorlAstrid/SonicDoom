@@ -60,6 +60,7 @@ user noarchive int	  StyleScore		= 0;
 user noarchive int	  DeathCounter		= 0;
 user noarchive int    GameScore         = 0;
 server noarchive int  CurrentLevel		= 0;
+user noarchive string LastStyleBonus    = "";
 
 /* tp_tips */
 server bool tp_show_notes = true;

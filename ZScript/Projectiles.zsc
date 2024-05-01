@@ -20,26 +20,33 @@ class ChaosRocket : FastProjectile
 		SeeSound "sweapons/missilefire";
 		DeathSound "weapons/rocklx";
 	}
+    override void Tick()
+    {
+        if (!target.CountInv("PowerHyper")) {
+            A_ChangeLinkFlags(false);
+            // if not in Hyper form, set NOBLOCKMAP to false so that parrying works
+            // Hyper form's multiple rockets breaks the thing when NOBLOCKMAP is false,
+            // so it'll be left on in Hyper form
+        }
+        if (wasKicked) {
+            A_ScaleVelocity(1.25);
+        }
+        if (bSeekerMissile) {
+            A_SeekerMissile(3, 45, SMF_LOOK|SMF_PRECISE|SMF_CURSPEED, 256);
+        }
+        Super.Tick();
+    }
 	States
 	{
 		Spawn:
-			MISL A 1 Bright {
-				if (!target.CountInv("PowerHyper")) {
-					A_ChangeLinkFlags(false);
-					// if not in Hyper form, set NOBLOCKMAP to false so that parrying works
-					// Hyper form's multiple rockets breaks the thing when NOBLOCKMAP is false,
-					// so it'll be left on in Hyper form
-				}
-				if (invoker.wasKicked) {
-					A_SeekerMissile(3, 45, SMF_LOOK|SMF_PRECISE|SMF_CURSPEED, 256);
-					A_ScaleVelocity(1.25);
-				}
-				return ResolveState(null);
-			}
+			MISL A 1 Bright;
 			Loop;
 		Pain:
+            MISL A 1 ACS_NamedTerminate("ParryEffect");
 			MISL A 1 {
 				ACS_NamedExecute("ParryEffect");
+				let style = StyleSystem(EventHandler.Find("StyleSystem"));
+				if (style) style.RocketBonus();
 				invoker.bShootable = false;
 				invoker.bSeekerMissile = true;
 				invoker.wasKicked = true;
@@ -81,7 +88,7 @@ class RapidGrenade : Actor
 			MISL A 1 Bright;
 			Loop;
 		Death:
-			MISL B 4 Bright A_Explode();
+			MISL B 4 Bright A_Explode(-1, -1, XF_HURTSOURCE|XF_EXPLICITDAMAGETYPE, false, 0, 0, 10, "BulletPuff", "None");
 			MISL C 3 Bright;
 			MISL D 2 Bright;
 			Stop;

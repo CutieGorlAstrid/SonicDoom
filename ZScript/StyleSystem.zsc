@@ -6,7 +6,13 @@ class StyleSystem : EventHandler
 	string current_weapon;
 	int consecutive_uses;
     Actor old_lookat_target;
+    string style_bonus;
     const SCORE_THRESHOLD = 25000;
+
+    /* Style bonus colours */
+    const STYLE_KILL = "Green";
+    const STYLE_POSITIONING = "Yellow";
+    const STYLE_SPECIAL = "Sapphire";
 
     actor CheckTarget(int distance)
     {
@@ -27,6 +33,53 @@ class StyleSystem : EventHandler
 		}
 	}
 
+    void ParryBonus(int health, int damage)
+    {
+        if (damage >= health) {
+            SetStyleBonus("$sbonus_bigparry", STYLE_SPECIAL);
+            score += SCORE_THRESHOLD * 1.5;
+        }
+        else {
+            SetStyleBonus("$sbonus_parry", STYLE_SPECIAL);
+            score += SCORE_THRESHOLD;
+            CapStyleScore();
+        }
+    }
+
+    void DeflectBonus(int health, int damage)
+    {
+        if (damage >= health) {
+            SetStyleBonus("$sbonus_bdeflect", STYLE_SPECIAL);
+            score += SCORE_THRESHOLD * 1.5;
+        }
+        else {
+            SetStyleBonus("$sbonus_deflect", STYLE_SPECIAL);
+            score += SCORE_THRESHOLD;
+            CapStyleScore();
+        }
+    }
+
+    void RocketBonus()
+    {
+        SetStyleBonus("$sbonus_rocket", STYLE_SPECIAL);
+        score += 12000;
+        CapStyleScore();
+    }
+
+    void SetStyleBonus(string bonus_name, string colour)
+    {
+        let current_style_bonus = cvar.FindCvar("LastStyleBonus").GetString();
+        let constructed_bonus = "+\c[" .. colour .. "]" .. StringTable.Localize(bonus_name);
+        style_bonus = constructed_bonus;
+        console.Printf("%s", style_bonus);
+        UpdateStyleBonusCvar();
+    }
+
+    void UpdateStyleBonusCvar()
+    {
+        cvar.FindCvar("LastStyleBonus").SetString(style_bonus);
+    }
+
     override void NetworkProcess(ConsoleEvent e)
     {
         if (e.Name == "taunt") {
@@ -39,13 +92,13 @@ class StyleSystem : EventHandler
             bool can_style_on_target = lookat_target.bIsMonster || lookat_target.GetClassName() == "Doox";
             if (is_different_target && can_style_on_target) {
                 score += SCORE_THRESHOLD + (SCORE_THRESHOLD / 10);
+                SetStyleBonus("$sbonus_taunt", STYLE_SPECIAL);
                 CapStyleScore();
             }
             CallACS("Taunt");
             old_lookat_target = lookat_target;
         }
     }
-
 
 	override void WorldTick()
 	{
@@ -69,12 +122,12 @@ class StyleSystem : EventHandler
 
 		/* Base increment */
 		if (PlayerIsResponsible) {
-            int damage_bonus = clamp(e.damage * 36, 0, SCORE_THRESHOLD);
-			scorebonus += SCORE_THRESHOLD / random(12, 14) + damage_bonus;
+            int damage_bonus = clamp(e.damage * 18, 0, SCORE_THRESHOLD);
+			scorebonus += SCORE_THRESHOLD / random(9, 11) + damage_bonus;
 		}
 		else {
 			if (stylerank >= 1) {
-				scorebonus += SCORE_THRESHOLD / random(15, 17);
+				scorebonus += SCORE_THRESHOLD / random(14, 16);
 			}
 			else {
 				return;
@@ -103,10 +156,6 @@ class StyleSystem : EventHandler
 		score += scorebonus;
 
         CapStyleScore();
-
-		/* It isn't here, but the player can also gain style
-           by parrying attacks, which is handled in the files
-           under the Player directory. */
 	}
 
     private int GetStyleBonuses(WorldEvent e, int scorebonus)
@@ -114,31 +163,74 @@ class StyleSystem : EventHandler
 		PlayerPawn player = players[consoleplayer].mo;
 		let ReadyWeapon = player.player.ReadyWeapon;
 
-        /* Player is mid-air */
-		if (!player.player.onground) {
-			scorebonus *= 1.3;
-		}
+        let enemy_killed = e.damage > e.thing.Health;
 
         /* Player is crouch sliding */
         bool is_moving = sqrt(player.vel.x ** 2 + player.vel.y ** 2) > 0.0;
         if (cvar.FindCvar("IsCrouching").GetBool() && is_moving) {
             scorebonus *= 2;
+            SetStyleBonus("$sbonus_slide", STYLE_POSITIONING);
         }
 
-		/* Enemy is mid-air */
-		if (e.thing.Pos.Z > e.thing.GetZAt()) {
-			scorebonus *= 2;
-		}
+        /* Mid-air bonuses */
+        let player_air = !player.player.onground;
+        let enemy_air  = e.thing.Pos.Z > e.thing.GetZAt();
+        if (player_air && enemy_air) {
+            scorebonus *= 3;
+            if (enemy_killed) {
+                SetStyleBonus("$sbonus_both_air", STYLE_POSITIONING);
+            }
+        }
+        else {
+            if (player_air) {
+                scorebonus *= 1.3;
+                if (enemy_killed) {
+                    SetStyleBonus("$sbonus_self_air", STYLE_POSITIONING);
+                }
+            }
+
+            if (enemy_air) {
+                scorebonus *= 2;
+                if (enemy_killed) {
+                    SetStyleBonus("$sbonus_enem_air", STYLE_POSITIONING);
+                }
+            }
+        }
+
+        let player_above_enemy = false;
+        if (e.damagesource) {
+            player_above_enemy = e.damagesource.Pos.Z > e.thing.Pos.Z;
+        }
 
         /* Enemy was killed */
-        if (e.damage > e.thing.Health) {
-            scorebonus *= 2;
-        }
+        if (enemy_killed) {
+            /* Attack from afar */
+            if (e.damagesource) {
+                let player_enemy_distance = e.damagesource.Distance3D(e.thing);
+                if (player_enemy_distance >= 2048) {
+                    scorebonus *= 2;
+                    SetStyleBonus("$sbonus_longshot", STYLE_POSITIONING);
+                }
+            }
+            /* Enemy that was killed was previously taunted at */
+            if (e.thing == old_lookat_target) {
+                scorebonus *= 4;
+                SetStyleBonus("$sbonus_taunt_k", STYLE_KILL);
+            }
+            else {
+                scorebonus *= 2;
+                if (player_above_enemy) {
+                    SetStyleBonus("$sbonus_kill_air", STYLE_KILL);
+                }
 
-		/* Different weapon used */
-		if (ReadyWeapon.GetClassName() != current_weapon) {
-			scorebonus *= 2;
-		}
+                if (e.damage > e.thing.SpawnHealth()) {
+                    SetStyleBonus("$sbonus_overkill", STYLE_KILL);
+                }
+                else {
+                    SetStyleBonus("$sbonus_kill", STYLE_KILL);
+                }
+            }
+        }
 
         return scorebonus;
     }
@@ -257,6 +349,7 @@ class StyleSystem : EventHandler
 		   uses and reset their current weapon. */
 		if (player.player.ReadyWeapon && player.player.ReadyWeapon.GetClassName() != current_weapon) {
 			consecutive_uses = 0;
+            SetStyleBonus("$sbonus_swap", "Sapphire");
 			current_weapon = player.player.ReadyWeapon.GetClassName();
 		}
 	}

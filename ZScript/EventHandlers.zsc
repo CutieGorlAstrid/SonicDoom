@@ -44,16 +44,21 @@ class SLL_ScoreHandler : EventHandler
         }
 
         bool player_damaged = e.thing is "PlayerPawn";
-        bool enemy_defeated = e.thing.bIsMonster && e.damage > e.thing.health;
+        bool player_responsible = e.damagesource && e.damagesource is "PlayerPawn";
+        bool enemy_damaged = e.thing.bIsMonster;
+        bool enemy_defeated = enemy_damaged && e.damage > e.thing.health;
 
         if (player_damaged) {
-            DeductScore(e.damage * 8);
+            DeductScore(e.damage * 64);
 		}
         if (enemy_defeated) {
-            int initial_bonus = e.thing.SpawnHealth() / 6;
-            if (IsTransformed()) initial_bonus * 2;
+            int initial_bonus = e.thing.SpawnHealth() / 3;
             IncrementScore(initial_bonus * (GetStyleRank() + 1));
 		}
+        else if (enemy_damaged && player_responsible) {
+            int initial_bonus = e.damage / 64;
+            IncrementScore(initial_bonus * (GetStyleRank() + 1));
+        }
     }
 
     override void WorldThingDied(WorldEvent e)

@@ -266,6 +266,23 @@ stylerank_ss    = "Speedy Skills!!";
 stylerank_sss   = "Super Sonic Style!!!";
 stylerank_u     = "UNDEFEATABLE";
 
+sbonus_kill     = "Kill"; // Killed an enemy
+sbonus_overkill = "Destroyed"; // Damage went over the enemy's spawn health
+sbonus_parry    = "Parry"; // Parried an enemy melee attack
+sbonus_bigparry = "Rules of Nature"; // Parried an otherwise fatal melee attack
+sbonus_deflect  = "Deflect"; // Parried a projectile as Amy
+sbonus_bdeflect = "Not Today"; // Parried an otherwise fatal projectile as Amy
+sbonus_kill_air = "Death From Above"; // The player killed an enemy from above their position
+sbonus_self_air = "Airstrike"; // The player is airborne and killed a grounded enemy
+sbonus_enem_air = "Airshot"; // The enemy is airborne and the player is grounded
+sbonus_both_air = "Un-gravitify"; // Both the player and the enemy are airborne
+sbonus_longshot = "Sniped"; // Killed an enemy from a long distance
+sbonus_slide    = "Sliding"; // Killed an enemy mid-crouch slide
+sbonus_taunt    = "Taunt"; // Taunted at an enemy
+sbonus_taunt_k  = "Dominated"; // Killed the enemy the player just taunted at
+sbonus_swap     = "Weapon Swap"; // The player attacked with a different weapon they previously attacked with
+sbonus_rocket   = "Rocket Boost"; // Awarded when Sonic hits his own rocket with the Homing Attack
+
 ARENAMUS_SONIC   = "Signs (Cyber Space 4-9)";
 ARENAMUS_AMY     = "Ephemeral (Cyber Space 4-2)";
 ARENAMUS_CLASSIC = "Rewind to go ahead (Cyber Space 4-7)";
