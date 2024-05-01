@@ -57,6 +57,7 @@ class ShadowSwitch : LLSwitch
 		//$Category Lock & Load Objects
 		DamageFactor "Spear", 1;
 		DamageFactor "ShadowMelee", 1;
+        DamageFactor "Shovel", 1;
 	}
 	States
 	{
@@ -80,6 +81,7 @@ class OmniSwitch : LLSwitch
 		DamageFactor "SpinDash", 1;
 		DamageFactor "Spear", 1;
 		DamageFactor "ShadowMelee", 1;
+        DamageFactor "Shovel", 1;
 	}
 	States
 	{
@@ -146,4 +148,22 @@ class Doox : SwitchingDecoration
 			DOOX A 1 A_SpawnItem("Doox");
 			Stop;
 	}
+}
+
+class UnderConstruction : Actor
+{
+    Default
+    {
+		//$Name Under Construction Sign
+		//$Category Lock & Load Objects
+        +SOLID;
+		XScale 0.8;
+		YScale 0.65;
+    }
+    States
+    {
+        Spawn:
+            UCON AAAAAAAABCDEFEDCB 2;
+            Loop;
+    }
 }

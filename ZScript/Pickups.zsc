@@ -32,7 +32,7 @@ class Ring : CustomInventory replaces HealthBonus // 2014
 }
 
 class DroppedRing : Ring
-{ 
+{
 	int fadeCounter;
 	int flashingThreshold;
 	int maxFade;
@@ -41,7 +41,7 @@ class DroppedRing : Ring
 	property maxFade: MaxFade;
 	property pickupThreshold: PickupThreshold;
 	int isVisible;
-	Default 
+	Default
 	{
 		-NOGRAVITY;
 		+CANPASS;
@@ -82,9 +82,9 @@ class DroppedRing : Ring
 	}
 }
 
-class DroppedRingPlayer : DroppedRing 
+class DroppedRingPlayer : DroppedRing
 {
-	Default 
+	Default
 	{
 		Inventory.PickupMessage "$p_lostring";
 		DroppedRing.PickupThreshold 30;
@@ -236,7 +236,7 @@ class ChaosRing : Ring replaces ArmorBonus // 2015
 				}
 			}
 			Stop;
-		} 
+		}
 }
 
 class ChaosRingGravity : ChaosRing { Default { -NOGRAVITY } }
@@ -342,7 +342,7 @@ class ShadowFever : CustomInventory
 			Stop;
 	}
 }
-class ChaosEmeralds : CustomInventory 
+class ChaosEmeralds : CustomInventory
 {
 	Default
 	{
@@ -603,13 +603,15 @@ class GoalRing : CustomInventory // 262
 		Inventory.PickupSound "spickup/goalring";
 		Radius 64;
 		Height 100;
+        XScale 3.0;
+        YScale 2.5;
 		+NOGRAVITY
 	}
 	States
 	{
 		Spawn:
-			GOAL A -1 Bright;
-			Stop;
+			GOAL ABCDEFGHIJ 4 Bright;
+			Loop;
 		Pickup:
 			TNT1 A 0 ACS_NamedExecute("GoalRing");
 			Stop;
@@ -652,7 +654,7 @@ class FakeBackpack : CustomInventory
 			BPAK A -1 Bright;
 			Stop;
 		Pickup:
-			TNT1 A 0 
+			TNT1 A 0
 			{
 				if (CountInv("SonicCheck"))
 				{
@@ -671,7 +673,7 @@ class FakeBackpack : CustomInventory
 	}
 }
 
-class FakeChainsaw : CustomInventory	
+class FakeChainsaw : CustomInventory
 {
 	Default
 	{
@@ -708,7 +710,7 @@ class WtfIsThis : Inventory
 
 class KeyTablet : Inventory
 {
-	Default 
+	Default
 	{
 		Inventory.PickupMessage "$p_keytablet";
 		Inventory.PickupSound   "spickup/keytablet";
