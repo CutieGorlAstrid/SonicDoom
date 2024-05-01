@@ -276,6 +276,9 @@ OptionMenu "SLL_Style"
     Option "Style Points Display", "StylePoints", "StylePoints"
 	StaticText ""
 
+    Option "Display Style Bonuses", "ShowStyleBonuses", "EnabledOrNot"
+	StaticText ""
+
     Option "Staleness Multiplier", "StaleMultiplier", "StaleMultiplier"
 	StaticText ""
 

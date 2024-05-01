@@ -71,7 +71,9 @@ class StyleSystem : EventHandler
         let current_style_bonus = cvar.FindCvar("LastStyleBonus").GetString();
         let constructed_bonus = "+\c[" .. colour .. "]" .. StringTable.Localize(bonus_name);
         style_bonus = constructed_bonus;
-        console.Printf("%s", style_bonus);
+        if (cvar.FindCvar("ShowStyleBonuses").GetBool()) {
+            console.Printf("%s", style_bonus);
+        }
         UpdateStyleBonusCvar();
     }
 
