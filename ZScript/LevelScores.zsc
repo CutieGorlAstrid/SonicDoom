@@ -83,7 +83,7 @@ class SLL_ScoreHandler : EventHandler
         bool enemy_defeated = enemy_damaged && e.damage > e.thing.health;
 
         if (player_damaged) {
-            DeductScore(e.damage * 64);
+            DeductScore(e.damage * 32);
 		}
         if (enemy_defeated) {
             int initial_bonus = e.thing.SpawnHealth() / 3;
