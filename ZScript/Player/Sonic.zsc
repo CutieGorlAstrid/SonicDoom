@@ -25,7 +25,7 @@ class SonicPlayer : LockLoadPlayer
 			if (inflictor != null && inflictor is "Actor" && (!inflictor.bMissile || Distance2D(source) < 100)) {
 				ACS_NamedExecute("ParryEffect");
 				let oldangle = source.angle;
-				source.A_DamageSelf(source.health / 3 + damage / 2, "Parry");
+				source.DamageMobj(self, self, source.health / 3 + damage / 2, "Parry");
 				source.A_SetAngle(angle);
 				source.A_Recoil(-damage * 2);
 				source.A_SetAngle(oldangle);

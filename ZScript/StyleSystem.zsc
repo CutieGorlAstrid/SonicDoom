@@ -132,6 +132,7 @@ class StyleSystem : EventHandler
 				scorebonus += SCORE_THRESHOLD / random(14, 16);
 			}
 			else {
+                GetStyleBonuses(e, scorebonus);
 				return;
 			}
 		}
@@ -165,7 +166,7 @@ class StyleSystem : EventHandler
 		PlayerPawn player = players[consoleplayer].mo;
 		let ReadyWeapon = player.player.ReadyWeapon;
 
-        let enemy_killed = e.damage > e.thing.Health;
+        let enemy_killed = e.thing.Health <= 0;
 
         /* Player is crouch sliding */
         bool is_moving = sqrt(player.vel.x ** 2 + player.vel.y ** 2) > 0.0;
@@ -231,6 +232,16 @@ class StyleSystem : EventHandler
                 else {
                     SetStyleBonus("$sbonus_kill", STYLE_KILL);
                 }
+            }
+            /* Enemy was killed with a parry */
+            if (e.damagetype == "Parry") {
+                scorebonus += SCORE_THRESHOLD / 2;
+                SetStyleBonus("$sbonus_parry_k", STYLE_KILL);
+            }
+            /* Enemy fell off-stage in Cyber Space Arena */
+            if (e.damagetype == "Falling") {
+                scorebonus += 20000;
+                SetStyleBonus("$sbonus_fall", STYLE_KILL);
             }
         }
 

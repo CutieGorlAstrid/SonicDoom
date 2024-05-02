@@ -272,6 +272,7 @@ sbonus_parry    = "Parry"; // Parried an enemy melee attack
 sbonus_bigparry = "Rules of Nature"; // Parried an otherwise fatal melee attack
 sbonus_deflect  = "Deflect"; // Parried a projectile as Amy
 sbonus_bdeflect = "Not Today"; // Parried an otherwise fatal projectile as Amy
+sbonus_parry_k  = "Royal Release"; // Killed an enemy with a parry
 sbonus_kill_air = "Death From Above"; // The player killed an enemy from above their position
 sbonus_self_air = "Airstrike"; // The player is airborne and killed a grounded enemy
 sbonus_enem_air = "Airshot"; // The enemy is airborne and the player is grounded
@@ -282,6 +283,7 @@ sbonus_taunt    = "Taunt"; // Taunted at an enemy
 sbonus_taunt_k  = "Dominated"; // Killed the enemy the player just taunted at
 sbonus_swap     = "Weapon Swap"; // The player attacked with a different weapon they previously attacked with
 sbonus_rocket   = "Rocket Boost"; // Awarded when Sonic hits his own rocket with the Homing Attack
+sbonus_fall     = "It's Not Melee"; // Enemy died from falling off-stage in Cyber Space Arena
 
 ARENAMUS_SONIC   = "Signs (Cyber Space 4-9)";
 ARENAMUS_AMY     = "Ephemeral (Cyber Space 4-2)";
