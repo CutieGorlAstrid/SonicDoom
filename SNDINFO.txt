@@ -210,6 +210,7 @@ shadow/taunt1      			dtaunt1
 shadow/taunt2      			dtaunt2
 shadow/nextlevel			moving
 shadow/damn4thchaos      	demerald
+shadow/damnit               dammit
 theycant/trollyouif			thereded
 shadow/goodresult			D_GOOD
 shadow/badresult			D_BAD
