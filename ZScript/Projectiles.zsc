@@ -102,7 +102,7 @@ class DuellingRocket : Actor
 		Radius 11;
 		Height 8;
 		Speed 30;
-		Damage 400;
+		Damage 120;
         Scale 1.5;
 		Projectile;
 		ProjectileKickBack 0;
