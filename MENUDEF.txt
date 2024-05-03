@@ -88,7 +88,7 @@ OptionMenu "SLL_Abilities"
 	StaticText ""
 
 	Option "Recoil Burst Input (Sonic)", "RecoilBurstRelease", "RecoilBurstRelease"
-    Option "Homing Assault Input (Shadow)", "HomingAssaultOffhand", "HomingAssaultOffhand"
+    Option "Homing Assault Input (Shadow)", "HomingAssaultInput", "HomingAssaultOffhand"
 	StaticText ""
 }
 OptionMenu "SLL_Assist"
@@ -316,8 +316,9 @@ OptionValue "RecoilBurstRelease"
 }
 OptionValue "HomingAssaultOffhand"
 {
-	0, "Jump"
-	1, "Offhand Attack"
+    0, "Disabled"
+	1, "Jump"
+	2, "Offhand Attack"
 }
 OptionValue "HomingReticle"
 {

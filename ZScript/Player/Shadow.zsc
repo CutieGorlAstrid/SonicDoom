@@ -761,24 +761,30 @@ class HomingAssault : CustomInventory
 	override void DoEffect()
 	{
 		Super.DoEffect();
-		if (owner.Pos.Z < owner.GetZAt()) {
-			owner.SetOrigin((owner.Pos.X, owner.Pos.Y, owner.GetZAt()), false);
-		}
-		if (inuse > 0)
-		{
-			inuse--;
-		}
-		int ActivationKey;
-		if (cvar.FindCvar("HomingAssaultOffhand").GetBool()) {
-			ActivationKey = BT_RELOAD; // Jump -> Offhand Attack
-		}
-		else {
-			ActivationKey = BT_JUMP; // Jump -> Jump
-		}
-		if (owner is "PlayerPawn" && owner.GetPlayerInput(MODINPUT_BUTTONS) & ActivationKey && !(owner.GetPlayerInput(MODINPUT_OLDBUTTONS) & ActivationKey) && inuse == 0 && !owner.player.onground)
-		{
-			owner.UseInventory(self);
-			inuse = 15;
-		}
+        if (cvar.FindCvar("HomingAssaultInput").GetInt() > 0) {
+            if (owner.Pos.Z < owner.GetZAt()) {
+                owner.SetOrigin((owner.Pos.X, owner.Pos.Y, owner.GetZAt()), false);
+            }
+
+            if (inuse > 0) {
+                inuse--;
+            }
+
+            int ActivationKey;
+            switch (cvar.FindCvar("HomingAssaultInput").GetInt()) {
+                case 1:
+                    ActivationKey = BT_RELOAD; // Jump -> Offhand Attack
+                    break;
+                case 2:
+                    ActivationKey = BT_JUMP; // Jump -> Jump
+                    break;
+            }
+
+            if (owner is "PlayerPawn" && owner.GetPlayerInput(MODINPUT_BUTTONS) & ActivationKey && !(owner.GetPlayerInput(MODINPUT_OLDBUTTONS) & ActivationKey) && inuse == 0 && !owner.player.onground)
+            {
+                owner.UseInventory(self);
+                inuse = 15;
+            }
+        }
 	}
 }

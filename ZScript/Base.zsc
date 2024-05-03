@@ -189,7 +189,7 @@ class LockLoadPlayer : PlayerPawn
 	{
 		FTranslatedLineTarget ltinfo;
 		bool SonicPrerequisite = CountInv("SonicCheck");
-		bool ShadowPrerequisite = CountInv("ShadowCheck") && !player.onground;
+		bool ShadowPrerequisite = CountInv("ShadowCheck") && cvar.FindCvar("HomingAssaultInput").GetInt() > 0 && !player.onground;
 		bool AmyPrerequisite = CountInv("AmyCheck") && !player.onground && player.ReadyWeapon.GetClassName() == "PikoPikoHammer";
 		bool HomingPrerequisite = SonicPrerequisite || ShadowPrerequisite || AmyPrerequisite;
 		if (GetCvar("HomingReticle") && HomingPrerequisite) {
