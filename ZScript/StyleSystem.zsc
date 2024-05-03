@@ -259,7 +259,7 @@ class StyleSystem : EventHandler
                 let weapon_name = current_weapon.GetClassName();
                 bool is_shotgun = weapon_name == "KineticShotty" || weapon_name == "QuadShotty";
                 if (is_shotgun && player_enemy_distance <= 150.0) {
-                    scorebonus += 2;
+                    scorebonus *= 2;
                     SetStyleBonus("$sbonus_pblank", STYLE_KILL);
                 }
             }
