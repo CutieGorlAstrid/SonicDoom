@@ -124,12 +124,12 @@ class StyleSystem : EventHandler
 
 		/* Base increment */
 		if (PlayerIsResponsible) {
-            int damage_bonus = clamp(e.damage * 18, 0, SCORE_THRESHOLD);
-			scorebonus += SCORE_THRESHOLD / random(9, 11) + damage_bonus;
+            int damage_bonus = clamp(e.damage * 12, 0, SCORE_THRESHOLD);
+			scorebonus += SCORE_THRESHOLD / random(18, 20) + damage_bonus;
 		}
 		else {
 			if (stylerank >= 1) {
-				scorebonus += SCORE_THRESHOLD / random(14, 16);
+				scorebonus += SCORE_THRESHOLD / random(24, 26);
 			}
 			else {
                 GetStyleBonuses(e, scorebonus);
