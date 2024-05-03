@@ -887,6 +887,20 @@ class LockLoadWeapon : Weapon
 		super.DepleteAmmo(altFire, checkEnough, ammouse);
 		return true;
 	}
+    action state WeaponHealing(int ring_limit)
+    {
+        if ((Health < ring_limit) && CountInv("ChaosEnergy") && !(CountInv("PowerSuper") || CountInv("PowerHyper"))) {
+            A_PlaySound("sweapons/healthcharge", 4096);
+            A_TakeInventory("ChaosEnergy", 16);
+            A_GiveInventory("Health", 3);
+            if (Health > ring_limit) { A_SetHealth(ring_limit); }
+        }
+        else {
+            A_PlaySound("sglobal/error", 4096);
+            return ResolveState("EndHeal");
+        }
+        return ResolveState(null);
+    }
 }
 
 class SlamAtkObject : CustomInventory

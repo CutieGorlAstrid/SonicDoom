@@ -812,20 +812,7 @@ class EclipseBlaster : LockLoadWeapon
 			ECBL DDDDDDDDDDDDDDDDDDDDDDD 1 A_WeaponReady(WRF_NOBOB|WRF_NOFIRE);
 			Goto Ready;
 		AltFire:
-			ECBL C 1 {
-				int ringLimit = 150;
-				if ((Health < ringLimit) && CountInv("ChaosEnergy") && !(CountInv("PowerSuper") || CountInv("PowerHyper"))) {
-					A_PlaySound("sweapons/healthcharge", 4096);
-					A_TakeInventory("ChaosEnergy", 16);
-					A_GiveInventory("Health", 3);
-					if (Health > ringLimit) { A_SetHealth(ringLimit); }
-				}
-				else {
-					A_PlaySound("sglobal/error", 4096);
-					return ResolveState("EndHeal");
-				}
-				return ResolveState(null);
-			}
+			ECBL C 1 WeaponHealing(150);
 			TNT1 A 0 A_ReFire();
 			/* passthrough */
 		EndHeal:
