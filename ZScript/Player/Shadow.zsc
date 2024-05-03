@@ -223,7 +223,10 @@ class ChaosEmerald : LockLoadWeapon
 					ACS_NamedExecute("Damn4thChaosEmerald");
 					ACS_NamedExecute("Subtitles", 0, 17);
 				}
-				if (!CountInv("PowerSuper") && !CountInv("Charging") && CountInv("ChaosEnergy") < 400) {
+                bool prerequisites = !CountInv("PowerSuper") && !CountInv("Charging");
+                bool is_moving_fast = sqrt(vel.x ** 2 + vel.y ** 2 + vel.z ** 2) > 20.0;
+                bool under_limit = CountInv("ChaosEnergy") < 400;
+				if (prerequisites && is_moving_fast && under_limit) {
 					A_GiveInventory("ChaosEnergy", 1);
 				}
 			}
