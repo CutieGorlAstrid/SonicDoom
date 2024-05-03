@@ -209,11 +209,15 @@ class StyleSystem : EventHandler
             player_above_enemy = e.damagesource.Pos.Z > e.thing.Pos.Z;
         }
 
+        let player_enemy_distance = 300.0;
+        if (e.damagesource && e.thing) {
+            player_enemy_distance = e.damagesource.Distance3D(e.thing);
+        }
+
         /* Enemy was killed */
         if (enemy_killed) {
             /* Attack from afar */
             if (e.damagesource) {
-                let player_enemy_distance = e.damagesource.Distance3D(e.thing);
                 if (player_enemy_distance >= 2048) {
                     scorebonus *= 2;
                     SetStyleBonus("$sbonus_longshot", STYLE_POSITIONING);
@@ -225,15 +229,17 @@ class StyleSystem : EventHandler
                 SetStyleBonus("$sbonus_taunt_k", STYLE_KILL);
             }
             else {
-                scorebonus *= 2;
                 if (player_above_enemy) {
+                    scorebonus *= 2;
                     SetStyleBonus("$sbonus_kill_air", STYLE_KILL);
                 }
 
                 if (e.damage > e.thing.SpawnHealth()) {
+                    scorebonus *= 2.5;
                     SetStyleBonus("$sbonus_overkill", STYLE_KILL);
                 }
                 else {
+                    scorebonus *= 2;
                     SetStyleBonus("$sbonus_kill", STYLE_KILL);
                 }
             }
@@ -246,6 +252,16 @@ class StyleSystem : EventHandler
             if (e.damagetype == "Falling") {
                 scorebonus += 20000;
                 SetStyleBonus("$sbonus_fall", STYLE_KILL);
+            }
+            /* Shotgun bonus */
+            let current_weapon = player.player.ReadyWeapon;
+            if (current_weapon) {
+                let weapon_name = current_weapon.GetClassName();
+                bool is_shotgun = weapon_name == "KineticShotty" || weapon_name == "QuadShotty";
+                if (is_shotgun && player_enemy_distance <= 150.0) {
+                    scorebonus += 2;
+                    SetStyleBonus("$sbonus_pblank", STYLE_KILL);
+                }
             }
         }
 

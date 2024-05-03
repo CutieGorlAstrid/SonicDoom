@@ -278,6 +278,7 @@ sbonus_self_air = "Airstrike"; // The player is airborne and killed a grounded e
 sbonus_enem_air = "Airshot"; // The enemy is airborne and the player is grounded
 sbonus_both_air = "Un-gravitify"; // Both the player and the enemy are airborne
 sbonus_longshot = "Sniped"; // Killed an enemy from a long distance
+sbonus_pblank   = "Blasted"; // Killed an enemy up-close with shotgun
 sbonus_slide    = "Sliding"; // Killed an enemy mid-crouch slide
 sbonus_taunt    = "Taunt"; // Taunted at an enemy
 sbonus_taunt_k  = "Dominated"; // Killed the enemy the player just taunted at
