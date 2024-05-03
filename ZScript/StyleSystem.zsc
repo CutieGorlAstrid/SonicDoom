@@ -296,8 +296,8 @@ class StyleSystem : EventHandler
         PlayerPawn player = players[consoleplayer].mo;
         int stylerank = cvar.FindCvar("StyleRank").GetInt();
 
-        int start_value = 64;
-        int step = 256;
+        int start_value = 128;
+        int step = 96;
         int deprecation = start_value + stylerank * step;
 
         if (deprecation_tick > 1) {
