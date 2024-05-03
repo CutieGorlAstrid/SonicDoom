@@ -332,6 +332,7 @@ class QuadShotty : LockLoadWeapon
 		Weapon.SelectionOrder 400;
 		Weapon.AmmoUse 25;
 		Weapon.AmmoGive 160;
+		Weapon.Kickback 975;
 		Weapon.AmmoType "ChaosEnergy";
 		Inventory.PickupMessage "Quarternary Decimator";
 		Tag "Quarternary Decimator";
