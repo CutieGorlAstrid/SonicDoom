@@ -79,7 +79,7 @@ OptionMenu "SLL_Abilities"
 	StaticText ""
 
 	Option "Caliburn Energy Blades (Sonic)", "EnergyBlades", "EnabledOrNot"
-	Option "Crash into walls when Boosting (Sonic)", "WallCrash", "EnabledOrNot"
+	Option "Crash into walls when Boosting", "WallCrash", "EnabledOrNot"
 	Option "Hyper Sonic", "HyperSonic", "EnabledOrNot"
 	StaticText ""
 
