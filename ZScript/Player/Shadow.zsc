@@ -20,6 +20,23 @@ class ShadowPlayer : LockLoadPlayer
 		Player.WeaponSlot 5, "ChaosEmerald";
 		Player.WeaponSlot 6, "DualRockets";
 	}
+	override int DamageMobj(Actor inflictor, Actor source, int damage, Name mod)
+	{
+		if (CountInv("PowerSwordParry")) {
+			if (inflictor != null && inflictor is "Actor" && (!inflictor.bMissile || Distance2D(source) < 100)) {
+				ACS_NamedExecute("ParryEffect");
+				let oldangle = source.angle;
+				source.DamageMobj(self, self, source.health / 3 + damage / 2, "Parry");
+				source.A_SetAngle(angle);
+				source.A_Recoil(-damage * 2);
+				source.A_SetAngle(oldangle);
+				let style = StyleSystem(EventHandler.Find("StyleSystem"));
+				if (style) style.ParryBonus(Health, damage);
+				damage = 0;
+			}
+		}
+		return Super.DamageMobj(inflictor, source, damage, mod);
+	}
 	States
 	{
 		Pain.Falling:
@@ -179,6 +196,7 @@ class HighShovel : ShadowBoostEnabledWeapon
 			TNT1 A 0 A_ReFire();
 			SHOV A 1 A_PlaySound("sweapons/swordswing", 1);
 			SHOV B 1;
+            TNT1 A 0 A_GiveInventory("SwordParry");
 			SHOV C 1 A_CustomPunch(250, 0, 0, "ShovelAtk", 75, 0, 0, "ArmorBonus", "sweapons/shovelbonk");
 			SHOV CCCCCCCCCBA 1 A_WeaponReady(WRF_NOBOB|WRF_NOFIRE);
 			Goto Ready;
