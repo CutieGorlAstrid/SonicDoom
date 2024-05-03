@@ -172,7 +172,9 @@ class StyleSystem : EventHandler
         bool is_moving = sqrt(player.vel.x ** 2 + player.vel.y ** 2) > 0.0;
         if (cvar.FindCvar("IsCrouching").GetBool() && is_moving) {
             scorebonus *= 2;
-            SetStyleBonus("$sbonus_slide", STYLE_POSITIONING);
+            if (enemy_killed) {
+                SetStyleBonus("$sbonus_slide", STYLE_POSITIONING);
+            }
         }
 
         /* Mid-air bonuses */
