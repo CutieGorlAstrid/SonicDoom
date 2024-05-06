@@ -270,6 +270,7 @@ stylerank_u     = "UNDEFEATABLE";
 sbonus_kill     = "Kill"; // Killed an enemy
 sbonus_overkill = "Destroyed"; // Damage went over the enemy's spawn health
 sbonus_parry    = "Parry"; // Parried an enemy melee attack
+sbonus_rskparry = "Risk Parry"; // Parried while recharging health as Classic Sonic
 sbonus_bigparry = "Rules of Nature"; // Parried an otherwise fatal melee attack
 sbonus_deflect  = "Deflect"; // Parried a projectile as Amy
 sbonus_bdeflect = "Not Today"; // Parried an otherwise fatal projectile as Amy

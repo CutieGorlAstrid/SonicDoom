@@ -35,7 +35,13 @@ class StyleSystem : EventHandler
 
     void ParryBonus(int health, int damage)
     {
-        if (damage >= health) {
+        PlayerPawn player = players[consoleplayer].mo;
+        bool is_probably_recharging = player.DamageFactor == 2;
+        if (is_probably_recharging) {
+            SetStyleBonus("$sbonus_rskparry", STYLE_SPECIAL);
+            score += SCORE_THRESHOLD * 1.7;
+        }
+        else if (damage >= health) {
             SetStyleBonus("$sbonus_bigparry", STYLE_SPECIAL);
             score += SCORE_THRESHOLD * 1.5;
         }
