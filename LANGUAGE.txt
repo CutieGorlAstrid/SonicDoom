@@ -291,7 +291,7 @@ sbonus_fall     = "It's Not Melee"; // Enemy died from falling off-stage in Cybe
 ARENAMUS_SONIC   = "Signs (Cyber Space 4-9)";
 ARENAMUS_AMY     = "Ephemeral (Cyber Space 4-2)";
 ARENAMUS_CLASSIC = "Rewind to go ahead (Cyber Space 4-7)";
-ARENAMUS_SHADOW  = "Hype Street -Revisited- (Cyber Space 4-F)";
+ARENAMUS_SHADOW  = "Enemy Territory (Episode Shadow Level 1)";
 
 // Random death messages
 death_rmsg1		= "Skill issue.";
