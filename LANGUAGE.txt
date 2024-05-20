@@ -357,6 +357,7 @@ level3_normal   = "A disused Eggman base, overrun with monsters.";
 level3_funny    = "A big wet.";
 
 // Hire This Zone
+// To understand this joke, listen to "NINTENDO, HIRE THIS MAN!" by Chris Voiceman.
 levelh_funny1   = "There's a man who has artistic vision...";
 levelh_funny2   = "This man's still a master of the medium!";
 

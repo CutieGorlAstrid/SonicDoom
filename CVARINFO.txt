@@ -39,6 +39,7 @@ user bool ShowStyleBonuses  		= true;
 user float StaleMultiplier          = 1;
 
 user bool CSA_DarkMode              = false;
+user bool CSA_GridColours           = true;
 user bool CSA_SpawnEnergy           = true;
 user bool CSA_SpawnRings            = true;
 user bool CSA_SpawnWeapons          = false;

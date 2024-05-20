@@ -306,14 +306,42 @@ script "GoalRing" (void)
 
 #define CYBER_SPACE_ARENA 69
 
-script "SetDarkCyberSpaceArena" ENTER
+script "SetCyberSpaceArenaTextures" ENTER
 {
-	if (GetCvar("CSA_DarkMode")) {
-		ReplaceTextures("SBOXGRID", "DBOXGRID");
-		if (GetLevelInfo(LEVELINFO_LEVELNUM) == CYBER_SPACE_ARENA) {
-			ChangeSky("NIGHTSKY", "NIGHTSKY");
-		}
-	}
+    while (1) {
+        bool dark_mode = GetCvar("CSA_DarkMode");
+        bool colours = GetCvar("CSA_GridColours");
+        if (colours && GetLevelInfo(LEVELINFO_LEVELNUM) == CYBER_SPACE_ARENA) {
+            switch (PlayerClass(PlayerNumber()))
+            {
+                case Sonic:
+                    ReplaceTextures("SBOXGRID", "SSBXGRID");
+                    break;
+                case Amy:
+                    ReplaceTextures("SBOXGRID", "ASBXGRID");
+                    break;
+                case ClassicSonic:
+                    ReplaceTextures("SBOXGRID", "CSBXGRID");
+                    break;
+                case Shadow:
+                    ReplaceTextures("SBOXGRID", "DSBXGRID");
+                    break;
+                default:
+                    break;
+            }
+        }
+        if (dark_mode) {
+            ReplaceTextures("SBOXGRID", "DBOXGRID");
+            ReplaceTextures("SSBXGRID", "SDBXGRID");
+            ReplaceTextures("ASBXGRID", "ADBXGRID");
+            ReplaceTextures("CSBXGRID", "CDBXGRID");
+            ReplaceTextures("DSBXGRID", "DDBXGRID");
+            if (GetLevelInfo(LEVELINFO_LEVELNUM) == CYBER_SPACE_ARENA) {
+                ChangeSky("NIGHTSKY", "NIGHTSKY");
+            }
+        }
+        Delay(1);
+    }
 }
 
 #define AUTOSAVE_ON_REQUEST 1 // known as "Scripts Only" in the options menu
