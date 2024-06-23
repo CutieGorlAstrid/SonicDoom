@@ -9,6 +9,10 @@ class StyleSystem : EventHandler
     string style_bonus;
     const SCORE_THRESHOLD = 25000;
 
+    bool ignore_style;
+    int buffer_timer;
+    const buffer_duration = 3;
+
     /* Style bonus colours */
     const STYLE_KILL = "Green";
     const STYLE_POSITIONING = "Yellow";
@@ -28,7 +32,7 @@ class StyleSystem : EventHandler
 		if (e.thing && e.thing is "PlayerPawn") {
 			DeductStyleScore(e);
 		}
-		else if (e.thing && is_attackable_target && !(e.damagesource && e.damagesource.bIsMonster) && !(e.inflictor && e.inflictor.bIsMonster)) {
+		else if (e.thing && is_attackable_target && !(e.damagesource && e.damagesource.bIsMonster) && !(e.inflictor && e.inflictor.bIsMonster) && !ignore_style) {
 			UpdateStyleScore(e);
 		}
 	}
@@ -68,8 +72,6 @@ class StyleSystem : EventHandler
     void RocketBonus()
     {
         SetStyleBonus("$sbonus_rocket", STYLE_SPECIAL);
-        score += 12000;
-        CapStyleScore();
     }
 
     void SetStyleBonus(string bonus_name, string colour)
@@ -108,8 +110,20 @@ class StyleSystem : EventHandler
         }
     }
 
+    void SetBuffer()
+    {
+        ignore_style = true;
+        buffer_timer = 0;
+    }
+
 	override void WorldTick()
 	{
+        if (ignore_style) {
+            buffer_timer++;
+            if (buffer_timer >= buffer_duration) {
+                ignore_style = false;
+            }
+        }
 		UpdateStyleRank();
 		DeprecateStyleScore();
 	}
@@ -127,19 +141,19 @@ class StyleSystem : EventHandler
 		int stylerank = cvar.FindCvar("StyleRank").GetInt();
 		int scorebonus;
         string style_bonus;
+        int score_divider = random(24, 26);
+        int damage_bonus = clamp(e.damage * 4, 0, SCORE_THRESHOLD);
 
 		/* Base increment */
 		if (PlayerIsResponsible) {
-            int damage_bonus = clamp(e.damage * 12, 0, SCORE_THRESHOLD);
-			scorebonus += SCORE_THRESHOLD / random(18, 20) + damage_bonus;
+			scorebonus += SCORE_THRESHOLD / score_divider + damage_bonus;
 		}
 		else {
 			if (stylerank >= 1) {
-				scorebonus += SCORE_THRESHOLD / random(24, 26);
+				scorebonus += SCORE_THRESHOLD / (score_divider + 6);
 			}
 			else {
                 GetStyleBonuses(e, scorebonus);
-				return;
 			}
 		}
 
@@ -153,7 +167,7 @@ class StyleSystem : EventHandler
 								   e.DamageType == "Piko" ||
 								   e.DamageType == "SonicPunch";
 
-        int staleness_factor = SCORE_THRESHOLD / 65;
+        int staleness_factor = SCORE_THRESHOLD / 245;
         int staleness = staleness_factor * consecutive_uses;
         staleness *= cvar.FindCvar("StaleMultiplier").GetFloat();
         staleness = clamp(staleness, 0, scorebonus);
@@ -302,8 +316,8 @@ class StyleSystem : EventHandler
         PlayerPawn player = players[consoleplayer].mo;
         int stylerank = cvar.FindCvar("StyleRank").GetInt();
 
-        int start_value = 128;
-        int step = 96;
+        int start_value = 96;
+        int step = 128;
         int deprecation = start_value + stylerank * step;
 
         if (deprecation_tick > 1) {
