@@ -384,7 +384,7 @@ class QuadShotty : LockLoadWeapon
 			Loop;
 		Fire:
 			SHT4 A 1 {
-				A_FireBullets(12, 9, 12, 36, "BulletPuff");
+				A_FireBullets(18, 15, 12, 36, "BulletPuff");
 				A_PlaySound("weapons/sshotf", CHAN_WEAPON);
 			}
             TNT1 A 0 A_GunFlash();
