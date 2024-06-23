@@ -770,14 +770,9 @@ class HomingAssault : CustomInventory
                 inuse--;
             }
 
-            int ActivationKey;
-            switch (cvar.FindCvar("HomingAssaultInput").GetInt()) {
-                case 1:
-                    ActivationKey = BT_RELOAD; // Jump -> Offhand Attack
-                    break;
-                case 2:
-                    ActivationKey = BT_JUMP; // Jump -> Jump
-                    break;
+            int ActivationKey = BT_RELOAD;
+            if (cvar.FindCvar("HomingAssaultInput").GetInt() == 2) {
+                ActivationKey = BT_JUMP;
             }
 
             if (owner is "PlayerPawn" && owner.GetPlayerInput(MODINPUT_BUTTONS) & ActivationKey && !(owner.GetPlayerInput(MODINPUT_OLDBUTTONS) & ActivationKey) && inuse == 0 && !owner.player.onground)
