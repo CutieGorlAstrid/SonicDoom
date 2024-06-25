@@ -169,6 +169,7 @@ class StyleSystem : EventHandler
 
         int staleness_factor = SCORE_THRESHOLD / 245;
         int staleness = staleness_factor * consecutive_uses;
+        staleness *= GetStalenessMultiplierFromWeapons(player);
         staleness *= cvar.FindCvar("StaleMultiplier").GetFloat();
         staleness = clamp(staleness, 0, scorebonus);
 
@@ -346,6 +347,54 @@ class StyleSystem : EventHandler
         if (style_rank >= 1) {
             GiveStyleRewards(player, style_rank);
         }
+    }
+
+    private int GetValidWeaponCount(PlayerPawn player)
+    {
+        int valid_weapons = 0;
+
+        for (let i = 0; i <= 6; i++) {
+            int slot_size = player.player.weapons.SlotSize(i);
+
+            for (let j = 0; j < slot_size; j++) {
+                let weapon_class_type = player.player.weapons.GetWeapon(i, j);
+
+                if (weapon_class_type && player.CountInv(weapon_class_type)) {
+                    valid_weapons += 1;
+                }
+            }
+        }
+
+        return valid_weapons;
+    }
+
+    private double GetStalenessMultiplierFromWeapons(PlayerPawn player) 
+    {
+        double multiplier = 0;
+
+        switch (GetValidWeaponCount(player)) {
+            case 6:
+                multiplier = 1;
+                break;
+            case 5:
+                multiplier = 0.8;
+                break;
+            case 4:
+                multiplier = 0.6;
+                break;
+            case 3:
+                multiplier = 0.4;
+                break;
+            case 2:
+            case 1:
+            case 0:
+            default:
+                // The player is using the default amount of weapons
+                multiplier = 0.2;
+                break;
+        }
+
+        return multiplier;
     }
 
 	private void GiveStyleRewards(Actor player, int style_rank)
