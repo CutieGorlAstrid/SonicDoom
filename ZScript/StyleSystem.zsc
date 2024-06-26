@@ -141,8 +141,8 @@ class StyleSystem : EventHandler
 		int stylerank = cvar.FindCvar("StyleRank").GetInt();
 		int scorebonus;
         string style_bonus;
-        int score_divider = random(24, 26);
-        int damage_bonus = clamp(e.damage * 4, 0, SCORE_THRESHOLD);
+        int score_divider = random(23, 25);
+        int damage_bonus = clamp(e.damage * 7, 0, SCORE_THRESHOLD);
 
 		/* Base increment */
 		if (PlayerIsResponsible) {
@@ -373,24 +373,25 @@ class StyleSystem : EventHandler
         double multiplier = 0;
 
         switch (GetValidWeaponCount(player)) {
+            // The player has a full arsenal
             case 6:
-                multiplier = 1;
+                multiplier = 1; // full staleness
                 break;
+            // The player has picked up three extra weapons
             case 5:
                 multiplier = 0.8;
                 break;
+            // The player has picked up two extra weapons
             case 4:
-                multiplier = 0.6;
+                multiplier = 0.5; // half staleness
                 break;
+            // The player has picked up one extra weapon
             case 3:
-                multiplier = 0.4;
+                multiplier = 0.3;
                 break;
-            case 2:
-            case 1:
-            case 0:
+            // The player only has the weapons they spawned with
             default:
-                // The player is using the default amount of weapons
-                multiplier = 0.2;
+                multiplier = 0; // no staleness
                 break;
         }
 
