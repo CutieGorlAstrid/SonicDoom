@@ -90,36 +90,34 @@ script "GoalRing" (void)
 
 	SetFont("BIGFONT");
 	int jingledelay;
-	switch (PlayerClass(PlayerNumber()))
-	{
-		case Sonic:
-			if (x_rank || s_rank) {
-				SetMusic("S_PERFCT");
-				jingledelay = 35*7;
-			}
-			else {
-				SetMusic("S_VICTOR");
-				jingledelay = 35*6;
-			}
-			HudMessage(s:"\c[Sonic]Stage Clear"; HUDMSG_PLAIN, 6, CR_WHITE, 1.5, 0.4, 0, 1.0);
-			break;
-		case Amy:
-			SetMusic("A_VICTOR");
-			jingledelay = 35*5;
-			HudMessage(s:"\c[Amy]Act Clear!"; HUDMSG_PLAIN, 6, CR_WHITE, 1.5, 0.4, 0, 1.0);
-			break;
-		case ClassicSonic:
-			SetMusic("C_VICTOR");
-			jingledelay = 35*6;
-			HudMessage(s:"\c[Classic]SONIC \c[White]GOT THROUGH\n\c[White]", s:strParam(n:PRINTNAME_LEVELNAME); HUDMSG_PLAIN, 6, CR_WHITE, 1.5, 0.37, 0, 1.0);
-			break;
-		case Shadow:
-			SetMusic("D_VICTOR");
-			jingledelay = 35*6;
-			HudMessage(s:"\c[Shadow]Mission Cleared"; HUDMSG_PLAIN, 6, CR_WHITE, 1.5, 0.4, 0, 1.0);
-			break;
-		default:
-			break;
+    switch (PlayerClass(PlayerNumber()))
+    {
+        case Sonic:
+            SetMusic("S_VICTOR");
+            jingledelay = 35*6;
+            HudMessage(s:"\c[Sonic]Stage Clear"; HUDMSG_PLAIN, 6, CR_WHITE, 1.5, 0.4, 0, 1.0);
+            break;
+        case Amy:
+            SetMusic("A_VICTOR");
+            jingledelay = 35*5;
+            HudMessage(s:"\c[Amy]Act Clear!"; HUDMSG_PLAIN, 6, CR_WHITE, 1.5, 0.4, 0, 1.0);
+            break;
+        case ClassicSonic:
+            SetMusic("C_VICTOR");
+            jingledelay = 35*6;
+            HudMessage(s:"\c[Classic]SONIC \c[White]GOT THROUGH\n\c[White]", s:strParam(n:PRINTNAME_LEVELNAME); HUDMSG_PLAIN, 6, CR_WHITE, 1.5, 0.37, 0, 1.0);
+            break;
+        case Shadow:
+            SetMusic("D_VICTOR");
+            jingledelay = 35*6;
+            HudMessage(s:"\c[Shadow]Mission Cleared"; HUDMSG_PLAIN, 6, CR_WHITE, 1.5, 0.4, 0, 1.0);
+            break;
+        default:
+            break;
+    }
+	if (x_rank || s_rank) {
+		SetMusic("S_PERFCT");
+		jingledelay = 35*7;
 	}
 	Delay(jingledelay);
 
