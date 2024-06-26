@@ -1,2 +1,8 @@
+# Doom Builder map settings
+*.dbs
 
-Graphics/Intro.mp4
+# Doom Builder backups
+*.backup*
+
+# Doom Builder autosaves
+*.autosave*
