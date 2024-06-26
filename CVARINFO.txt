@@ -37,6 +37,7 @@ user int  StylePoints				= 3;
 user bool StyleBonuses  			= true;
 user bool ShowStyleBonuses  		= true;
 user float StaleMultiplier          = 1;
+user int  UseMultipliers	       	= 0;
 
 user bool CSA_DarkMode              = false;
 user bool CSA_GridColours           = true;

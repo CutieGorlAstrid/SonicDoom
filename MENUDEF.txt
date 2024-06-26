@@ -273,6 +273,9 @@ OptionMenu "SLL_Style"
 	Option "Display Rank", "StyleRankVisible", "EnabledOrNot"
 	StaticText ""
 
+    Option "Rank Style", "UseMultipliers", "StyleRankDisplay"
+    StaticText ""
+
 	Option "Callouts", "StyleCallouts", "EnabledOrNot"
 	StaticText ""
 
@@ -356,4 +359,10 @@ OptionValue "StylePoints"
     1, "Numerical"
     2, "Fractional"
     3, "Percentage"
+}
+OptionValue "StyleRankDisplay"
+{
+    0, "Use Rank Letters"
+    1, "Use Multiplier Numerals"
+    2, "Letters w/ Multiplier"
 }

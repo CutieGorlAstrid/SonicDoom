@@ -25,6 +25,7 @@ sstyle/outstanding			OUTSTAND // S
 sstyle/amazing				AMAZING	 // SS
 sstyle/supersonic			SUPSONIC // SSS
 sstyle/unlimited   			UNLIMTED // U
+sstyle/increment			rankup
 
 // Pickups
 
