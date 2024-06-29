@@ -111,15 +111,17 @@ class LockLoadPlayer : PlayerPawn
 	void CheckWallJumpReady()
 	{
 		bool TouchingWall = false;
+		bool TouchingEnemy = false;
 		for (int x = 0; x <= 360; x += 90) {
 			TouchingWall = CheckLOF(CLOFF_JUMP_ON_MISS | CLOFF_SKIPENEMY | CLOFF_SKIPFRIEND | CLOFF_SKIPOBJECT | CLOFF_MUSTBESOLID | CLOFF_ALLOWNULL | CLOFF_NOAIM_VERT, 32, 0, x);
-			if (TouchingWall) {
+			TouchingEnemy = CheckLOF(CLOFF_JUMPENEMY | CLOFF_SKIPOBJECT | CLOFF_MUSTBESHOOTABLE | CLOFF_JUMPNONHOSTILE, 128, 0, x);
+			if (TouchingWall || TouchingEnemy) {
 				JumpAngle = x;
-				cvar.FindCvar("CanWallJump").SetBool(TouchingWall);
+				cvar.FindCvar("CanWallJump").SetBool(true);
 				break;
 			}
 		}
-		if (!TouchingWall) {
+		if (!TouchingWall && !TouchingEnemy) {
 			cvar.FindCvar("CanWallJump").SetBool(false);
 		}
 	}
