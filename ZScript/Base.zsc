@@ -4,6 +4,7 @@ class LockLoadPlayer : PlayerPawn
 	double OldZ;
 	bool ReticleActive;
 	int JumpAngle;
+    Actor EnemyJumpTarget;
 	Default
 	{
 		Health 100;
@@ -114,7 +115,8 @@ class LockLoadPlayer : PlayerPawn
 		bool TouchingEnemy = false;
 		for (int x = 0; x <= 360; x += 90) {
 			TouchingWall = CheckLOF(CLOFF_JUMP_ON_MISS | CLOFF_SKIPENEMY | CLOFF_SKIPFRIEND | CLOFF_SKIPOBJECT | CLOFF_MUSTBESOLID | CLOFF_ALLOWNULL | CLOFF_NOAIM_VERT, 32, 0, x);
-			TouchingEnemy = CheckLOF(CLOFF_JUMPENEMY | CLOFF_SKIPOBJECT | CLOFF_MUSTBESHOOTABLE | CLOFF_JUMPNONHOSTILE, 128, 0, x);
+			TouchingEnemy = CheckLOF(CLOFF_JUMPENEMY | CLOFF_SKIPOBJECT | CLOFF_MUSTBESHOOTABLE | CLOFF_JUMPNONHOSTILE | CLOFF_SETTARGET, 128, 0, x);
+            if (TouchingEnemy) EnemyJumpTarget = target;
 			if (TouchingWall || TouchingEnemy) {
 				JumpAngle = x;
 				cvar.FindCvar("CanWallJump").SetBool(true);
@@ -124,6 +126,9 @@ class LockLoadPlayer : PlayerPawn
 		if (!TouchingWall && !TouchingEnemy) {
 			cvar.FindCvar("CanWallJump").SetBool(false);
 		}
+        if (!TouchingEnemy) {
+            EnemyJumpTarget = null;
+        }
 	}
 
 	void CheckEnemyProximity()
@@ -414,6 +419,17 @@ class LockLoadPlayer : PlayerPawn
 			else if (TouchingWall && GetHeightFromFloor() > 60) {
 				DoubleJumpCounter = 0; // You get a free double jump after a wall jump
 				DoWallJump(WallJumpOffset, WallJumpDistance, JumpAngle);
+                Actor enemy = EnemyJumpTarget;
+				if (enemy) { // If if was an Enemy Jump
+					if (target.bFLY || target.bFLOAT) target.Vel.Z = 0;
+					else target.Vel.Z = 5;
+					
+					target.A_ClearTarget();
+					if (target.ResolveState("Idle")) target.SetState(target.ResolveState("Idle"));
+					
+					let style = StyleSystem(EventHandler.Find("StyleSystem"));
+					if (style) style.EnemyJumpBonus();
+				}
 			}
 			else if (level.IsJumpingAllowed() && !IsHovering() && !(CountInv("ShadowCheck") && GetCvar("CanHoming"))) {
 				if (DoDoubleJump(DoubleJumpCounter, DoubleJumpCount)) {

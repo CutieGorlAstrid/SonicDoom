@@ -74,6 +74,13 @@ class StyleSystem : EventHandler
         SetStyleBonus("$sbonus_rocket", STYLE_SPECIAL);
     }
 
+    void EnemyJumpBonus()
+    {
+        SetStyleBonus("$sbonus_ejump", STYLE_POSITIONING);
+        score += 18000;
+        CapStyleScore();
+    }
+
     void SetStyleBonus(string bonus_name, string colour)
     {
         let current_style_bonus = cvar.FindCvar("LastStyleBonus").GetString();
