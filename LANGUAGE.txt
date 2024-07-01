@@ -283,10 +283,11 @@ sbonus_longshot = "Sniped"; // Killed an enemy from a long distance
 sbonus_pblank   = "Blasted"; // Killed an enemy up-close with shotgun
 sbonus_slide    = "Sliding"; // Killed an enemy mid-crouch slide
 sbonus_taunt    = "Taunt"; // Taunted at an enemy
+sbonus_ejump    = "Rebounded"; // Performed an Enemy Jump (a Wall Jump off an enemy)
 sbonus_taunt_k  = "Dominated"; // Killed the enemy the player just taunted at
 sbonus_swap     = "Weapon Swap"; // The player attacked with a different weapon they previously attacked with
 sbonus_rocket   = "Rocket Boost"; // Awarded when Sonic hits his own rocket with the Homing Attack
-sbonus_fall     = "It's Not Melee"; // Enemy died from falling off-stage in Cyber Space Arena
+sbonus_fall     = "It's Not Melee"; // Enemy died from the "Falling" damage type (usually in Cyber Space Arena)
 
 ARENAMUS_SONIC   = "Signs (Cyber Space 4-9)";
 ARENAMUS_AMY     = "Ephemeral (Cyber Space 4-2)";
