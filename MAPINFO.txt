@@ -19,10 +19,6 @@ gameinfo
 	DimAmount = 0.30
 	EventHandlers = "SLL_ScoreHandler", "LastWeaponHandler", "CyberSpaceArenaHandler", "GiveEnergyOnDamage", "EnemiesBleedRings", "StyleSystem", "SpongyEnemies", "DeathCounter", "CheckpointRemovalHandler"
 	StatusBarClass = "SLL_StatusBar"
-	Intro {
-		Video = "Graphics/Intro.ivf"
-		Sound = "Graphics/Intro.ogg"
-	}
 }
 
 DamageType SonicKick

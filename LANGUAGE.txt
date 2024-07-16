@@ -140,6 +140,12 @@ BOSSEND =
 	"stone wall, waiting for the player to\n"
 	"start a new game...";
 
+epilepsy_wtitle  = "Epilepsy Warning";
+epilepsy_warning = 
+    "This mod contains fast-moving graphics and\n"
+    "flashing lights which may trigger seizures\n"
+    "in people with photosensitive epilepsy.";
+
 QUITMSG1 = "\c[LiBlue] I see your problem... too slow!";
 QUITMSG2 = "\c[LiBlue] What's wrong? Too fast for you?";
 QUITMSG3 = "\c[LiBlue] Heeey!! What about your memories?!";

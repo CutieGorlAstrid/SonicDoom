@@ -159,6 +159,13 @@ Graphic "LOGO", 633, 191
 	Patch "LOGO", 0, 0
 }
 
+Graphic "AERIVELO", 1198, 729
+{
+    XScale 3.000
+    YScale 3.000
+    Patch "AERIVELO", 0, 0
+}
+
 Graphic "X_RANK", 312, 308
 {
 	XScale 4.500
