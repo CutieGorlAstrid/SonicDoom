@@ -93,9 +93,9 @@ DamageType Shockwave
 	Factor = 0
 }
 
-map TITLEMAP "The Next Level"
+map TITLEMAP "Title Screen"
 {
-	sky1 = "NIGHTSKY"
+	sky1 = "CITYSKY"
 	music = S_TITLE
 }
 
