@@ -314,19 +314,33 @@ script "SetCyberSpaceArenaTextures" ENTER
             {
                 case Sonic:
                     ReplaceTextures("SBOXGRID", "SSBXGRID");
+                    ReplaceTextures("DBOXGRID", "SDBXGRID");
                     break;
                 case Amy:
                     ReplaceTextures("SBOXGRID", "ASBXGRID");
+                    ReplaceTextures("DBOXGRID", "ADBXGRID");
                     break;
                 case ClassicSonic:
                     ReplaceTextures("SBOXGRID", "CSBXGRID");
+                    ReplaceTextures("DBOXGRID", "CDBXGRID");
                     break;
                 case Shadow:
                     ReplaceTextures("SBOXGRID", "DSBXGRID");
+                    ReplaceTextures("DBOXGRID", "DDBXGRID");
                     break;
                 default:
                     break;
             }
+        }
+        else {
+            ReplaceTextures("SSBXGRID", "SBOXGRID");
+            ReplaceTextures("ASBXGRID", "SBOXGRID");
+            ReplaceTextures("CSBXGRID", "SBOXGRID");
+            ReplaceTextures("DSBXGRID", "SBOXGRID");
+            ReplaceTextures("SDBXGRID", "DBOXGRID");
+            ReplaceTextures("ADBXGRID", "DBOXGRID");
+            ReplaceTextures("CDBXGRID", "DBOXGRID");
+            ReplaceTextures("DDBXGRID", "DBOXGRID");
         }
         if (dark_mode) {
             ReplaceTextures("SBOXGRID", "DBOXGRID");
@@ -336,6 +350,16 @@ script "SetCyberSpaceArenaTextures" ENTER
             ReplaceTextures("DSBXGRID", "DDBXGRID");
             if (GetLevelInfo(LEVELINFO_LEVELNUM) == CYBER_SPACE_ARENA) {
                 ChangeSky("NIGHTSKY", "NIGHTSKY");
+            }
+        }
+        else {
+            ReplaceTextures("DBOXGRID", "SBOXGRID");
+            ReplaceTextures("SDBXGRID", "SSBXGRID");
+            ReplaceTextures("ADBXGRID", "ASBXGRID");
+            ReplaceTextures("CDBXGRID", "CSBXGRID");
+            ReplaceTextures("DDBXGRID", "DSBXGRID");
+            if (GetLevelInfo(LEVELINFO_LEVELNUM) == CYBER_SPACE_ARENA) {
+                ChangeSky("CYBRBACK", "CYBRBACK");
             }
         }
         Delay(1);
