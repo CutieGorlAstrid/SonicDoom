@@ -161,8 +161,8 @@ Graphic "LOGO", 633, 191
 
 Graphic "AERIVELO", 1198, 729
 {
-    XScale 3.000
-    YScale 3.000
+    XScale 4.000
+    YScale 4.000
     Patch "AERIVELO", 0, 0
 }
 

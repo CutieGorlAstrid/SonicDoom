@@ -351,13 +351,13 @@ level_instruct  = "This teleporter leads to";
 level0_normal   = "Fight endless waves of enemies in a grid-based zone.";
 level0_funny    = "Fight enemies until you get bored and leave.";
 
-// Sunset Gardens
-level1_normal   = "An island off the outskirts of South Island.";
-level1_funny    = "Green Hill's looking a lot more like Brown Hill!";
+// Vibrant Gardens
+level1_normal   = "A vibrant locale on South Island, close to Green Hill.";
+level1_funny    = "No, no, see, it's different, because this time, it's DOOM!";
 
 // Marble Madness
-level2_normal   = "An oddly familiar labyrinth of pain.";
-level2_funny    = "A house. Made of marble.";
+level2_normal   = "A corrupted zone which was never that nice to begin with.";
+level2_funny    = "It's a big old Marble House.";
 
 // Oceanic Fortress
 level3_normal   = "A disused Eggman base, overrun with monsters.";

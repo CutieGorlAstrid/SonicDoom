@@ -22,7 +22,7 @@ class ChaosRocket : FastProjectile
 	}
     override void Tick()
     {
-        if (!target.CountInv("PowerHyper")) {
+        if (target && !target.CountInv("PowerHyper")) {
             A_ChangeLinkFlags(false);
             // if not in Hyper form, set NOBLOCKMAP to false so that parrying works
             // Hyper form's multiple rockets breaks the thing when NOBLOCKMAP is false,

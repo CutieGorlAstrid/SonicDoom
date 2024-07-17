@@ -109,15 +109,15 @@ episode SDLobby
 map SDLobby "Station Square"
 {
 	music = S_LOBBY
-	sky1 = "NIGHTSKY"
+	sky1 = "CITYSKY"
 	author = "That1M8Head"
 	nointermission
 }
 
-map SDLvl01 "Sunset Gardens"
+map SDLvl01 "Vibrant Gardens"
 {
 	music = S_LVL01
-	sky1 = "SUNSTSKY"
+	sky1 = "GHZSKY"
 	next = "SDLobby"
 	partime = 300
 	levelnum = 1
