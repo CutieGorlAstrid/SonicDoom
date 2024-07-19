@@ -583,7 +583,7 @@ class ChaosSpearAtk : CustomInventory
 		{
 			inuse--;
 		}
-		bool CanHomingWithOffhand = cvar.FindCvar("CanHoming").GetBool() && cvar.FindCvar("HomingAssaultOffhand").GetBool();
+		bool CanHomingWithOffhand = cvar.FindCvar("CanHoming").GetBool() && cvar.FindCvar("HomingAssaultInput").GetInt() == 2;
 		if (owner is "PlayerPawn" && owner.GetPlayerInput(MODINPUT_BUTTONS) & BT_RELOAD && !(owner.GetPlayerInput(MODINPUT_OLDBUTTONS) & BT_RELOAD) && inuse == 0 && !CanHomingWithOffhand)
 		{
 			owner.UseInventory(self);
@@ -769,9 +769,9 @@ class HomingAssault : CustomInventory
                 inuse--;
             }
 
-            int ActivationKey = BT_RELOAD;
+            int ActivationKey = BT_JUMP;
             if (cvar.FindCvar("HomingAssaultInput").GetInt() == 2) {
-                ActivationKey = BT_JUMP;
+                ActivationKey = BT_RELOAD;
             }
 
             if (owner is "PlayerPawn" && owner.GetPlayerInput(MODINPUT_BUTTONS) & ActivationKey && !(owner.GetPlayerInput(MODINPUT_OLDBUTTONS) & ActivationKey) && inuse == 0 && !owner.player.onground)
