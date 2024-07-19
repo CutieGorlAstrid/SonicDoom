@@ -57,7 +57,6 @@ OptionMenu "SLL_Options"
 	SubMenu "Gameplay Modifiers", "SLL_Modifiers"
 	SubMenu "Heads-Up Display", "SLL_HUD"
 	SubMenu "Music & Sounds", "SLL_Audio"
-	SubMenu "Miscellaneous", "SLL_Misc"
 	SubMenu "Style System", "SLL_Style"
 	StaticText ""
 
@@ -121,6 +120,11 @@ OptionMenu "SLL_Audio"
 
 	Option "Low Health Warning", "LowHealthSound", "EnabledOrNot"
 	Option "Low Energy Warning (Super Form)", "LowEnergySound", "EnabledOrNot"
+	StaticText ""
+
+	Option "HIRE THIS MAN", "HireThisMan", "EnabledOrNot"
+	StaticText "Enable this option to replace the title screen music", "White"
+	StaticText "with 'NINTENDO, HIRE THIS MAN!' by Chris Voiceman.", "White"
 	StaticText ""
 }
 OptionMenu "SLL_Controls"
@@ -210,21 +214,6 @@ OptionMenu "SLL_HUD"
 
 	Option "Control Hints", "ControlHints", "EnabledOrNot"
 	StaticText "Deprecated, no longer updated.", "Red"
-	StaticText ""
-}
-OptionMenu "SLL_Misc"
-{
-	Title "Misc. Options"
-
-	StaticText "Customise miscellaneous options.", "White"
-	StaticText ""
-
-	Option "Dark Cyber Space Arena", "DarkArena", "EnabledOrNot"
-	StaticText ""
-
-	Option "HIRE THIS MAN", "HireThisMan", "EnabledOrNot"
-	StaticText "Enable this option to replace the title screen music", "White"
-	StaticText "with 'NINTENDO, HIRE THIS MAN!' by Chris Voiceman.", "White"
 	StaticText ""
 }
 OptionMenu "SLL_Modifiers"
