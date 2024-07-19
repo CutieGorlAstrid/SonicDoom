@@ -168,7 +168,7 @@ OptionMenu "SLL_CyberSpace"
     StaticText "Configure the Cyber Space Arena's parameters.", "White"
     StaticText ""
 
-    Option "Chaos Energy", "CSA_SpawnEnergy", "ArenaEnergy"
+    Option "Spawn Energy Pickups", "CSA_SpawnEnergy", "EnabledOrNot"
     StaticText ""
 
     Option "Dark Mode", "CSA_DarkMode", "EnabledOrNot"
@@ -340,11 +340,6 @@ OptionValue "ArenaMusic"
 	3, "$ARENAMUS_CLASSIC"
 	4, "$ARENAMUS_SHADOW"
 	5, "Custom"
-}
-OptionValue "ArenaEnergy"
-{
-    0, "Regenerate Energy"
-    1, "Spawn Energy pickups"
 }
 OptionValue "StaleMultiplier"
 {
