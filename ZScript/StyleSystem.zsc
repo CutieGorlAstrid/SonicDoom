@@ -97,6 +97,16 @@ class StyleSystem : EventHandler
         cvar.FindCvar("LastStyleBonus").SetString(style_bonus);
     }
 
+    bool CanTakeDamage()
+    {
+        // Used for the "Must Style" gameplay modifier
+
+        let must_style = cvar.FindCvar("MustStyle").GetBool();
+        let style_rank = cvar.FindCvar("StyleRank").GetInt();
+
+        return !must_style || style_rank >= 5;
+    }
+
     override void NetworkProcess(ConsoleEvent e)
     {
         if (e.Name == "taunt") {

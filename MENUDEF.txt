@@ -228,12 +228,6 @@ OptionMenu "SLL_Modifiers"
 	StaticText "and you'll receive a health boost if you're close up to the enemy.", "White"
 	StaticText ""
 
-	Option "Give Energy On Damage", "GiveEnergyOnDamage", "EnabledOrNot"
-	StaticText "Dealing damage to or killing monsters will net you some", "White"
-	StaticText "Chaos Energy, which is capped at either 300 or 500 Energy", "White"
-	StaticText "depending on if the monster was only damaged or was killed.", "White"
-	StaticText ""
-
 	Option "Iron Hedgehog", "PermadeathMode", "EnabledOrNot"
 	StaticText "When you lose all your Rings, you won't be able to retry the", "White"
 	StaticText "level with all your progress intact - you'll be sent straight", "White"
@@ -249,8 +243,13 @@ OptionMenu "SLL_Modifiers"
 	Option "Spongy Enemies", "SpongyEnemies", "EnabledOrNot"
 	Slider "Spongy Multiplier", "Sponginess", 2, 10, 1
 	StaticText "Enable this modifier to have enemies with multiplied health,", "White"
-	StaticText "so you can enjoy longer fights and show off your skills!", "White"
+	StaticText "so you can enjoy longer fights and show off your skills.", "White"
 	StaticText ""
+
+    Option "Must Style", "MustStyle", "EnabledOrNot"
+    StaticText "Enemies will only take damage at Style Rank S (Skyrocketing!)", "White"
+    StaticText "or higher, so you must build up your rank to defeat enemies.", "White"
+    StaticText ""
 }
 OptionMenu "SLL_Style"
 {

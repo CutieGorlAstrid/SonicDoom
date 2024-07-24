@@ -30,6 +30,7 @@ user int  Sponginess				= 2;
 user bool OneHitMode				= false;
 user bool CountDeaths				= false;
 user bool PermadeathMode			= false;
+user bool MustStyle 				= false;
 
 user bool StyleRankVisible          = true;
 user bool StyleCallouts				= true;

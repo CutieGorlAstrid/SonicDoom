@@ -1,4 +1,21 @@
-class ActualLostSoul : LostSoul replaces LostSoul { Default { DropItem "SoulRing"; } }
+class ActualLostSoul : LostSoul replaces LostSoul
+{
+    Default
+    {
+        DropItem "SoulRing";
+    }
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            // Since the enemy still technically NEEDS to take damage in order
+            // for style to be accumulated, we can just immediately reset their
+            // health.
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
+}
 
 class FastSpiderdemon : SpiderMastermind // 19924
 {
@@ -17,6 +34,14 @@ class FastSpiderdemon : SpiderMastermind // 19924
 		DamageFactor "SonicKick", 2;
 		PainChance "Caliburn", 0;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 	States
 	{
 		Spawn:
@@ -93,6 +118,14 @@ class MechZombie : Actor
 		DropItem "SoulRing";
 		//$Category Lock & Load Enemies
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
  	States
 	{
 	Spawn:
@@ -144,6 +177,14 @@ class WalkingCapsule : Demon
 		DropItem "FadingBlueChaosCapsule";
 		//$Category Lock & Load Enemies
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 	States
 	{
 		Spawn:
@@ -186,6 +227,14 @@ class FrickingCyberdemon : Actor
 		Tag "Fricking Cyberdemon";
 		//$Category Lock & Load Enemies
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 	States
 	{
 		Spawn:
@@ -398,6 +447,14 @@ class SLL_Arachnotron : Arachnotron replaces Arachnotron
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_Archvile : Archvile replaces Archvile
 {
@@ -407,6 +464,14 @@ class SLL_Archvile : Archvile replaces Archvile
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_BaronOfHell : BaronOfHell replaces BaronOfHell
 {
@@ -416,6 +481,14 @@ class SLL_BaronOfHell : BaronOfHell replaces BaronOfHell
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_Cacodemon : Cacodemon replaces Cacodemon
 {
@@ -425,6 +498,14 @@ class SLL_Cacodemon : Cacodemon replaces Cacodemon
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_Chaingunner : ChaingunGuy replaces ChaingunGuy
 {
@@ -434,6 +515,14 @@ class SLL_Chaingunner : ChaingunGuy replaces ChaingunGuy
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
     States
     {
         Missile:
@@ -451,6 +540,14 @@ class SLL_Cyberdemon : Cyberdemon replaces Cyberdemon
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_Demon : Demon replaces Demon
 {
@@ -460,6 +557,14 @@ class SLL_Demon : Demon replaces Demon
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_DoomImp : DoomImp replaces DoomImp
 {
@@ -469,6 +574,14 @@ class SLL_DoomImp : DoomImp replaces DoomImp
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_Fatso : Fatso replaces Fatso
 {
@@ -478,6 +591,14 @@ class SLL_Fatso : Fatso replaces Fatso
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_HellKnight : HellKnight replaces HellKnight
 {
@@ -487,6 +608,14 @@ class SLL_HellKnight : HellKnight replaces HellKnight
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_PainElemental : PainElemental replaces PainElemental
 {
@@ -496,6 +625,14 @@ class SLL_PainElemental : PainElemental replaces PainElemental
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_Revenant : Revenant replaces Revenant
 {
@@ -505,6 +642,14 @@ class SLL_Revenant : Revenant replaces Revenant
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_Shotgunner : ShotgunGuy replaces ShotgunGuy
 {
@@ -514,6 +659,14 @@ class SLL_Shotgunner : ShotgunGuy replaces ShotgunGuy
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
     States
     {
         Missile:
@@ -535,6 +688,14 @@ class SLL_SpiderMastermind : SpiderMastermind replaces SpiderMastermind
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
     States
     {
         Missile:
@@ -553,6 +714,14 @@ class SLL_Spectre : Spectre replaces Spectre
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_WolfensteinSS : WolfensteinSS replaces WolfensteinSS
 {
@@ -562,6 +731,14 @@ class SLL_WolfensteinSS : WolfensteinSS replaces WolfensteinSS
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
 }
 class SLL_ZombieMan : ZombieMan replaces ZombieMan
 {
@@ -570,11 +747,16 @@ class SLL_ZombieMan : ZombieMan replaces ZombieMan
 		PainChance "Caliburn", 0;
 		PainChance "Parry", 255;
 		PainChance "Shockwave", 255;
-	}
-	Default
-	{
 		DropItem "FadingChaosCapsule";
 	}
+    override int TakeSpecialDamage(Actor inflictor, Actor source, int damage, Name damagetype)
+    {
+        let style = StyleSystem(EventHandler.Find("StyleSystem"));
+        if (style && cvar.FindCvar("MustStyle").GetBool() && !style.CanTakeDamage() && damagetype != "Falling") {
+            Health += damage;
+        }
+        return super.TakeSpecialDamage(inflictor, source, damage, damagetype);
+    }
  	States
 	{
 		Missile:
