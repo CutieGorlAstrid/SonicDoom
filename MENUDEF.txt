@@ -57,6 +57,7 @@ OptionMenu "SLL_Options"
 	SubMenu "Gameplay Modifiers", "SLL_Modifiers"
 	SubMenu "Heads-Up Display", "SLL_HUD"
 	SubMenu "Music & Sounds", "SLL_Audio"
+    SubMenu "Persistent Storage", "SLL_Saves"
 	SubMenu "Style System", "SLL_Style"
 	StaticText ""
 
@@ -249,6 +250,30 @@ OptionMenu "SLL_Modifiers"
     Option "Must Style", "MustStyle", "EnabledOrNot"
     StaticText "Enemies will only take damage at Style Rank S (Skyrocketing!)", "White"
     StaticText "or higher, so you must build up your rank to defeat enemies.", "White"
+    StaticText ""
+}
+OptionMenu "SLL_Saves"
+{
+    Title "Persistent Storage"
+
+    StaticText "Configure persistent game variables.", "White"
+    StaticText ""
+
+    Option "Persist Progression", "SaveCurrentLevel", "EnabledOrNot"
+    StaticText "When enabled, completing a level will have that level", "White"
+    StaticText "unlocked forever, and this will persist across game", "White"
+    StaticText "game sessions.", "White"
+    StaticText ""
+
+    Option "Persist Weapons", "SaveWeapons", "EnabledOrNot"
+    StaticText "When obtaining a new weapon, it will be stored into", "White"
+    StaticText "the config file and loaded when a new level is loaded.", "White"
+    StaticText "This will persist across game sessions.", "White"
+    StaticText ""
+
+    SafeCommand "Reset Progression", "CurrentlySavedLevel = 0", "Are you sure you want to reset your progression? This will reset you to the first level."
+
+    SafeCommand "Clear Weapons", "slot1_unlocked = false; slot2_unlocked = false; slot3_unlocked = false; slot4_unlocked = false; slot5_unlocked = false; slot6_unlocked = false", "Are you sure you want to clear all weapon slots? This will reset your inventory to the base weapons."
     StaticText ""
 }
 OptionMenu "SLL_Style"

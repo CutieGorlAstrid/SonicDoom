@@ -51,6 +51,17 @@ user bool CSA_SpawnEnergy           = true;
 user bool CSA_SpawnRings            = true;
 user bool CSA_SpawnWeapons          = false;
 
+/* Persistent game variables (i.e. save file type stuff) */
+user bool SaveCurrentLevel          = true;
+user bool SaveWeapons               = true;
+server bool slot1_unlocked          = true;
+server bool slot2_unlocked          = true;
+server bool slot3_unlocked          = false;
+server bool slot4_unlocked          = false;
+server bool slot5_unlocked          = false;
+server bool slot6_unlocked          = false;
+server int CurrentlySavedLevel      = 0;
+
 /* Temporary CVARs */
 user noarchive bool	  Sliding			= false;
 user noarchive bool   SoulSurgeReady	= false;

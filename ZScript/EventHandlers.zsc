@@ -31,12 +31,6 @@ class CyberSpaceArenaHandler : EventHandler
 			}
 		}
 	}
-
-    override void NewGame() {
-        // This is indirectly related to the Arena, which is why it doesn't
-        // have its own event handler
-        cvar.FindCvar("CurrentLevel").SetInt(0);
-    }
 }
 
 class GiveEnergyOnDamage : EventHandler
@@ -227,4 +221,92 @@ class CheckpointRemovalHandler : EventHandler
 			e.thing.Destroy();
 		}
 	}
+}
+
+class PermanentStorageHandler : StaticEventHandler
+{
+    bool run_inventory_logic;
+
+    void SetCurrentlyUnlockedLevelPersistent()
+    {
+        let level = cvar.FindCvar("CurrentLevel");
+        let p_level = cvar.FindCvar("CurrentlySavedLevel");
+
+        if (level.GetInt() == p_level.GetInt()) return;
+
+        if (level.GetInt() > p_level.GetInt()) {
+            p_level.SetInt(level.GetInt());
+        }
+
+        if (p_level.GetInt() > level.GetInt()) {
+            level.SetInt(p_level.GetInt());
+        }
+    }
+
+    override void NewGame()
+    {
+        let level = cvar.FindCvar("CurrentLevel");
+
+        if (!cvar.FindCvar("SaveCurrentLevel").GetBool()) {
+            level.SetInt(0);
+        }
+    }
+
+    void SetUnlockedWeapons(PlayerInfo player_info, Actor player)
+    {
+        // Don't store weapons in Cyber Space Arena
+        if (level.MapName == "SDCYBRSP") return;
+
+        let weapons = player_info.weapons;
+
+        for (let i = 1; i <= 6; i++) {
+            let slot_size = weapons.SlotSize(i);
+            for (let j = 0; j < slot_size; j++) {
+                let weapon_class_type = weapons.GetWeapon(i, j);
+                cvar.FindCvar("slot" .. i .. "_unlocked").SetBool(player.FindInventory(weapon_class_type));
+            }
+        }
+    }
+
+    void GiveUnlockedWeapons(PlayerInfo player_info, Actor player)
+    {
+        let weapons = player_info.weapons;
+
+        for (let i = 1; i <= 6; i++) {
+            let slot_size = weapons.SlotSize(i);
+            for (let j = 0; j < slot_size; j++) {
+                let weapon_class_type = weapons.GetWeapon(i, j);
+                let weapon_class_name = weapon_class_type.GetClassName();
+                if (cvar.FindCvar("slot" .. i .. "_unlocked").GetBool()) {
+                    if (!player.FindInventory(weapon_class_type)) {
+                        player.GiveInventory(weapon_class_type, 1, false);
+                    }
+                }
+            }
+        }
+    }
+
+    override void WorldLoaded(WorldEvent e)
+    {
+        if (cvar.FindCvar("SaveCurrentLevel").GetBool()) {
+            SetCurrentlyUnlockedLevelPersistent();
+        }
+
+        run_inventory_logic = level.MapName != "TITLEMAP";
+
+        let player = players[consoleplayer];
+
+        if (run_inventory_logic && cvar.FindCvar("SaveWeapons").GetBool()) {
+            SetUnlockedWeapons(player, player.mo);
+        }
+    }
+
+    override void WorldTick()
+    {
+        let player = players[consoleplayer];
+
+        if (run_inventory_logic && cvar.FindCvar("SaveWeapons").GetBool()) {
+            GiveUnlockedWeapons(player, player.mo);
+        }
+    }
 }
