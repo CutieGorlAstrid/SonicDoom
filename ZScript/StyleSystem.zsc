@@ -257,13 +257,13 @@ class StyleSystem : EventHandler
             /* Attack from afar */
             if (e.damagesource) {
                 if (player_enemy_distance >= 2048) {
-                    scorebonus *= 2;
+                    scorebonus *= 2.5;
                     SetStyleBonus("$sbonus_longshot", STYLE_POSITIONING);
                 }
             }
             /* Enemy that was killed was previously taunted at */
             if (e.thing == old_lookat_target) {
-                scorebonus *= 4;
+                scorebonus *= 3;
                 SetStyleBonus("$sbonus_taunt_k", STYLE_KILL);
             }
             else {
@@ -273,11 +273,11 @@ class StyleSystem : EventHandler
                 }
 
                 if (e.damage > e.thing.SpawnHealth()) {
-                    scorebonus *= 2.5;
+                    scorebonus *= 2;
                     SetStyleBonus("$sbonus_overkill", STYLE_KILL);
                 }
                 else {
-                    scorebonus *= 2;
+                    scorebonus *= 1.5;
                     SetStyleBonus("$sbonus_kill", STYLE_KILL);
                 }
             }
