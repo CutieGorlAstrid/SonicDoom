@@ -8,7 +8,7 @@ user int HomingReticle				= 1;
 user int InvincMusic 				= 1;
 user int SuperMusic 				= 1;
 user int ArenaMusic 				= 0;
-user int HomingAssaultInput         = 1;
+user int HomingAssaultInput         = 0;
 user string ArenaCustomMusic 		= "";
 
 /* Other options */
