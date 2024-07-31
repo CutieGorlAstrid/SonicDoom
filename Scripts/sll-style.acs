@@ -148,7 +148,7 @@ script "StyleRank" ENTER
 
         oldrank = GetCvar("StyleRank");
 
-        int StylePointsDisplay = GetCvar("StylePoints");
+        int StylePointsDisplay = GetCvar("StylePointDisplay");
         if (StylePointsDisplay != SPOINTS_NONE) {
             int display_score = stylescore % 25000 % 25000;
 

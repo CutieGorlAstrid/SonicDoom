@@ -292,7 +292,7 @@ OptionMenu "SLL_Style"
 	Option "Callouts", "StyleCallouts", "EnabledOrNot"
 	StaticText ""
 
-    Option "Style Points Display", "StylePoints", "StylePoints"
+    Option "Style Points Display", "StylePointDisplay", "StylePoints"
 	StaticText ""
 
     Option "Display Style Bonuses", "ShowStyleBonuses", "EnabledOrNot"

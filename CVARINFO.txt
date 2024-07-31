@@ -38,7 +38,7 @@ user bool MustStyle 				= false;
 /* Style System */
 user bool StyleRankVisible          = true;
 user bool StyleCallouts				= true;
-user int  StylePoints				= 3;
+user int  StylePointDisplay     	= 3;
 user bool StyleBonuses  			= true;
 user bool ShowStyleBonuses  		= true;
 user float StaleMultiplier          = 1;
