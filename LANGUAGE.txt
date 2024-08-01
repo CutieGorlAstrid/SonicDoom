@@ -1,4 +1,4 @@
-[en default]
+[eng default]
 
 SECRETMESSAGE = "\c[MenuActive] Found a secret!";
 TXT_YES = "Yeah!";
