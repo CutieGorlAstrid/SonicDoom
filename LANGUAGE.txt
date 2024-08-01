@@ -382,6 +382,22 @@ level_locked_4  = "first.";
 autosave_alert = "Save data warning!";
 change_autosave_level = "Please go into Options > Advanced Options > Miscellaneous Options and set 'Enable autosaves' to 'Scripts Only'. Checkpoints and on-level-entry saving will not work or break otherwise.";
 
+vg_hintprefix   = "\c[White] Press \c[Gold]";
+vg_hintprefix2  = "\c[White] Press and hold \c[Gold]";
+vg_hint1p2      = "\c[White] to jump.\n\c[White]Press it again to ";
+vg_hint1p3      = "double jump";
+vg_hint2        = "\c[White] to attack this white switch.";
+vg_hint3s       = "\c[White] to Quick Step.";
+vg_hint3a       = "\c[White] to Slide Dash.";
+vg_hint3c       = "\c[White] while unarmed to Spin Dash.";
+vg_hint3d       = "\c[White] to Chaos Snap.";
+vg_hint4        = "\c[White] to quickly switch weapons.";
+vg_hint5        = "\c[Green]Chaos Energy\c[White] works as your ammo.\nRefill it with pickups or by playing \c[Gold]stylishly.";
+vg_hint6        = "\c[White] when close to a wall to jump off it.";
+vg_hint7        = "\c[White] to perform a crouch slide.";
+vg_hint8p2      = "\c[White] mid_air to Slam Attack.";
+vg_hint8p3      = "\c[White] mid-air to Bounce Attack.";
+
 MENU_NEWGAME 	= "New Game";
 MENU_ABOUT 		= "About";
 MENU_OPTIONS 	= "Options";
