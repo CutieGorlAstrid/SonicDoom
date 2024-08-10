@@ -182,7 +182,7 @@ default,Identifier,Remarks
 "Don't stand still in combat.\nIt'll lead to a quick failure.",title_msg16,
 "While you're in the heat of the moment,\ntry not to get overconfident. It won't end well.",title_msg17,
 "Devil May Blast. Devil May Robo Blast?\nEh, I'll come up with a better metaphor later.",title_msg18,
-"I never thought I'd get this far.",title_msg19,
+"Also try \c[Purple]Sonic Re;Velocity\c[White]!",title_msg19,
 "If you see this, say 'flanksteak'.",title_msg20,
 "This teleporter leads to",level_instruct,level name is expected to go after here
 "Fight endless waves of enemies in a grid-based zone.",level0_normal,Cyber Space Arena
