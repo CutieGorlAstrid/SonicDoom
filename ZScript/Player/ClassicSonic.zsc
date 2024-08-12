@@ -347,13 +347,14 @@ class ClassicAbilities : LockLoadWeapon replaces Fist
 		SpinDash:
 			TNT1 A 1 {
 				SetHeight(22);
+                bSOLID = false;
                 cvar.FindCvar("IsSpinDashing").SetBool(true);
 				A_ChangeVelocity(invoker.SpinCharges * 2.2, 0, Vel.Z, CVF_Relative|CVF_Replace);
 				if (GetPlayerInput(MODINPUT_BUTTONS) & BT_JUMP && A_CheckFloor("Null")) {
 					A_ChangeVelocity(0, 0, invoker.SpinCharges / 7);
 				}
 				int speed = sqrt(Vel.X ** 2 + Vel.Y ** 2);
-				double spin_dash_damage = invoker.SpinCharges;
+				double spin_dash_damage = invoker.SpinCharges / 2;
 				double spin_dash_range = speed + 128;
 				for (int x = 0; x <= 120; x++) {
 					FTranslatedLineTarget t;
@@ -368,6 +369,7 @@ class ClassicAbilities : LockLoadWeapon replaces Fist
 			TNT1 A 0 {
 				SetHeight(42);
                 cvar.FindCvar("IsSpinDashing").SetBool(false);
+                bSOLID = true;
 				if (GetPlayerInput(INPUT_BUTTONS) & BT_CROUCH) {
 					return ResolveState(null);
 				}
