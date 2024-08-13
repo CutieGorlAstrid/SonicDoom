@@ -1,13 +1,15 @@
 class LevelScores
 {
+    // At some point I should document the LVLSCORE format...
+    // Eh, I can do it later.
     static int GetLevelTargetScore() {
         int target_score = 0;
 
         int lump = -1;
 
-        if (lump = Wads.FindLump("LVLSCORE")) {
+        while (-1 != (lump = Wads.FindLump("LVLSCORE", lump + 1))) {
             string score_text = Wads.ReadLump(lump);
-            target_score = ParseLevelScores(score_text);
+            target_score += ParseLevelScores(score_text);
         }
 
         return target_score;
