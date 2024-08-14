@@ -381,7 +381,7 @@ class Caliburn : BoostEnabledWeapon
 		Slash2:
 			TNT1 A 0 A_PlaySound("sonic/grunt", 8);
 			CAL2 A 1;
-			TNT1 A 0 SwordAttack(40, 90, true);
+			TNT1 A 0 SwordAttack(25, 90, true);
 			CAL2 BCD 1 A_WeaponReady(WRF_NOBOB|WRF_NOFIRE);
 			CAL2 EEEEEEEEEEEEEE 1 {
 				A_WeaponReady(WRF_NOBOB|WRF_NOFIRE);
@@ -395,7 +395,7 @@ class Caliburn : BoostEnabledWeapon
 		AirSlash:
 			TNT1 A 0 A_PlaySound("sonic/grunt", 8);
 			CAL3 A 1;
-			TNT1 A 0 SwordAttack(80, 160, true);
+			TNT1 A 0 SwordAttack(50, 110, true);
 			CAL3 BCD 1;
 			CAL3 EEEEEEEEEE 1 {
 				A_WeaponReady(WRF_NOBOB|WRF_NOFIRE);
