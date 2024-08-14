@@ -93,13 +93,11 @@ class ShadowBoostEnabledWeapon : LockLoadWeapon
 			default:
 				/* Shadow */
 				A_SetMugShotState("Boost");
-				A_FireBullets(60, 60, 150, 1, "BoostPuff", FBF_NORANDOM, 125);
 				A_TakeInventory("ChaosEnergy", 1);
 				break;
 			case 1:
 				/* Super Shadow */
 				A_SetMugShotState("SuperBoost");
-				A_FireBullets(120, 120, 150, 999, "BoostPuff", FBF_NORANDOM, 140);
 				break;
 		}
 		A_PlaySound("sweapons/boosttrail", 1, 1.0, true);
