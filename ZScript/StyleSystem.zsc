@@ -335,7 +335,7 @@ class StyleSystem : EventHandler
         int stylerank = cvar.FindCvar("StyleRank").GetInt();
 
         int start_value = 32;
-        int step = 48;
+        int step = 64;
         int deprecation = start_value + stylerank * step;
 
         if (deprecation_tick > 1) {
