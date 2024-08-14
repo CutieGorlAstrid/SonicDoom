@@ -277,7 +277,7 @@ class SilentRosePistol : LockLoadWeapon
 			Loop;
 		Fire:
 			RSFP A 0 { invoker.ShotsFired++; }
-			RSFP B 1 A_FireBullets(0, 0, 3, 60, "NoGibPuff", FBF_USEAMMO|FBF_NORANDOM);
+			RSFP B 1 A_FireBullets(0, 0, 3, 10, "NoGibPuff", FBF_USEAMMO|FBF_NORANDOM);
 			RSFP CBA 1 A_WeaponReady(WRF_NOBOB|WRF_NOFIRE);
 			RSFP A 0 A_JumpIf(invoker.ShotsFired >= 12, "Reloading");
 			RSFP AAAAAAAA 1 {
