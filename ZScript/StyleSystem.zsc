@@ -118,7 +118,7 @@ class StyleSystem : EventHandler
             bool is_different_target = lookat_target != old_lookat_target;
             bool can_style_on_target = lookat_target.bIsMonster || lookat_target.GetClassName() == "Doox";
             if (is_different_target && can_style_on_target) {
-                score += SCORE_THRESHOLD + (SCORE_THRESHOLD / 10);
+                score += SCORE_THRESHOLD / 4;
                 SetStyleBonus("$sbonus_taunt", STYLE_SPECIAL);
                 CapStyleScore();
             }
@@ -158,8 +158,8 @@ class StyleSystem : EventHandler
 		int stylerank = cvar.FindCvar("StyleRank").GetInt();
 		int scorebonus;
         string style_bonus;
-        int score_divider = random(23, 25);
-        int damage_bonus = clamp(e.damage * 7, 0, SCORE_THRESHOLD);
+        int score_divider = random(26, 28);
+        int damage_bonus = clamp(e.damage * 8, 0, SCORE_THRESHOLD);
 
 		/* Base increment */
 		if (PlayerIsResponsible) {
@@ -221,21 +221,21 @@ class StyleSystem : EventHandler
         let player_air = !player.player.onground;
         let enemy_air  = e.thing.Pos.Z > e.thing.GetZAt();
         if (player_air && enemy_air) {
-            scorebonus *= 3;
+            scorebonus *= 1.5;
             if (enemy_killed) {
                 SetStyleBonus("$sbonus_both_air", STYLE_POSITIONING);
             }
         }
         else {
             if (player_air) {
-                scorebonus *= 1.3;
+                scorebonus *= 1.5;
                 if (enemy_killed) {
                     SetStyleBonus("$sbonus_self_air", STYLE_POSITIONING);
                 }
             }
 
             if (enemy_air) {
-                scorebonus *= 2;
+                scorebonus *= 1.5;
                 if (enemy_killed) {
                     SetStyleBonus("$sbonus_enem_air", STYLE_POSITIONING);
                 }
@@ -263,12 +263,12 @@ class StyleSystem : EventHandler
             }
             /* Enemy that was killed was previously taunted at */
             if (e.thing == old_lookat_target) {
-                scorebonus *= 3;
+                scorebonus *= 2;
                 SetStyleBonus("$sbonus_taunt_k", STYLE_KILL);
             }
             else {
                 if (player_above_enemy) {
-                    scorebonus *= 2;
+                    scorebonus *= 1.8;
                     SetStyleBonus("$sbonus_kill_air", STYLE_KILL);
                 }
 
@@ -277,7 +277,7 @@ class StyleSystem : EventHandler
                     SetStyleBonus("$sbonus_overkill", STYLE_KILL);
                 }
                 else {
-                    scorebonus *= 1.5;
+                    scorebonus *= 1.6;
                     SetStyleBonus("$sbonus_kill", STYLE_KILL);
                 }
             }
@@ -334,8 +334,8 @@ class StyleSystem : EventHandler
         PlayerPawn player = players[consoleplayer].mo;
         int stylerank = cvar.FindCvar("StyleRank").GetInt();
 
-        int start_value = 96;
-        int step = 128;
+        int start_value = 32;
+        int step = 48;
         int deprecation = start_value + stylerank * step;
 
         if (deprecation_tick > 1) {

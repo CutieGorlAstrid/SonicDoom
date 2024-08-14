@@ -85,14 +85,14 @@ class SLL_ScoreHandler : EventHandler
         bool enemy_defeated = enemy_damaged && e.damage > e.thing.health;
 
         if (player_damaged) {
-            DeductScore(e.damage * 32);
+            DeductScore(e.damage * 18);
 		}
         if (enemy_defeated) {
-            int initial_bonus = e.thing.SpawnHealth() / 3;
+            int initial_bonus = e.thing.SpawnHealth() / 2.5;
             IncrementScore(initial_bonus * (GetStyleRank() + 1));
 		}
         else if (enemy_damaged && player_responsible) {
-            int initial_bonus = e.damage / 64;
+            int initial_bonus = (e.damage / 4) + 1;
             IncrementScore(initial_bonus * (GetStyleRank() + 1));
         }
     }
