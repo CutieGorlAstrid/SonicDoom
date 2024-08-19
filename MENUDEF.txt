@@ -238,7 +238,7 @@ OptionMenu "SLL_Modifiers"
 
 	Option "One-Hit Mode", "OneHitMode", "EnabledOrNot"
     StaticText "You die in one hit! It's like Oh No, but enemies have normal", "White"
-    StaticText "health, so you have to get really good at dodging or parrying.", "White"
+    StaticText "health, so you actually have to put in some effort into winning.", "White"
     StaticText "The game is not meant to be beaten on this mode.", "White"
 	StaticText ""
 
