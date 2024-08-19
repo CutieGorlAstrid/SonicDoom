@@ -244,8 +244,9 @@ OptionMenu "SLL_Modifiers"
 
 	Option "Spongy Enemies", "SpongyEnemies", "EnabledOrNot"
 	Slider "Spongy Multiplier", "Sponginess", 2, 10, 1
-	StaticText "Enable this modifier to have enemies with multiplied health,", "White"
-	StaticText "so you can enjoy longer fights and show off your skills.", "White"
+	StaticText "Enemies will have their health boosted by this multiplier.", "White"
+    StaticText "The higher the multiplier, the more health the enemies will have.", "White"
+    StaticText "Useful if you feel like enemies die too quickly.", "White"
 	StaticText ""
 
     Option "Must Style", "MustStyle", "EnabledOrNot"
