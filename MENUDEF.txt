@@ -237,8 +237,9 @@ OptionMenu "SLL_Modifiers"
 	StaticText ""
 
 	Option "One-Hit Mode", "OneHitMode", "EnabledOrNot"
-	StaticText "Enable this mode for a challenging experience, where", "White"
-	StaticText "any damage dealt to you instantly results in death.", "White"
+    StaticText "You die in one hit! It's like Oh No, but enemies have normal", "White"
+    StaticText "health, so you have to get really good at dodging or parrying.", "White"
+    StaticText "The game is not meant to be beaten on this mode.", "White"
 	StaticText ""
 
 	Option "Spongy Enemies", "SpongyEnemies", "EnabledOrNot"
