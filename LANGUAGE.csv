@@ -205,6 +205,8 @@ default,Identifier,Remarks
 "Please go into Options > Advanced Options > Miscellaneous Options and set 'Enable autosaves' to 'Scripts Only'. Checkpoints and on-level-entry saving will not work or break otherwise.",change_autosave_level,
 "\c[White] Press \c[Gold]",vg_hintprefix,
 "\c[White] Press and hold \c[Gold]",vg_hintprefix2,
+"\c[White] to attack with your weapon.",vg_hint0p1,
+"\c[White] to use its secondary attack.",vg_hint0p2,
 "\c[White] to jump.\n\c[White]Press it again to ",vg_hint1p2,
 "double jump",vg_hint1p3,
 "\c[White] to attack this white switch.",vg_hint2,
