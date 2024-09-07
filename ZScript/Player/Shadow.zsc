@@ -254,6 +254,7 @@ class ChaosEmerald : LockLoadWeapon
 		Weapon.SelectionOrder 3700;
 		Weapon.AmmoType "ChaosEnergy";
 		Weapon.AmmoUse 400;
+        Weapon.AmmoGive 400;
 		Inventory.PickupMessage "Chaos Emerald";
 		Tag "Chaos Emerald";
 		+WEAPON.AMMO_OPTIONAL
