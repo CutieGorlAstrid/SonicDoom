@@ -165,13 +165,8 @@ class StyleSystem : EventHandler
 		if (PlayerIsResponsible) {
 			scorebonus += SCORE_THRESHOLD / score_divider + damage_bonus;
 		}
-		else {
-			if (stylerank >= 1) {
-				scorebonus += SCORE_THRESHOLD / (score_divider + 6);
-			}
-			else {
-                GetStyleBonuses(e, scorebonus);
-			}
+		else if (stylerank >= 1) {
+            scorebonus += SCORE_THRESHOLD / (score_divider + 6);
 		}
 
 		UpdateWeapon();
