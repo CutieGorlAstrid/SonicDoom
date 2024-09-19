@@ -17,16 +17,14 @@ gameinfo
 	menufontcolor_selection = "MenuActive"
 	DimColor = "00 00 00"
 	DimAmount = 0.30
-	EventHandlers = "SLL_ScoreHandler", 
-                    "LastWeaponHandler", 
-                    "CyberSpaceArenaHandler", 
-                    "GiveEnergyOnDamage", 
-                    "EnemiesBleedRings", 
-                    "StyleSystem", 
-                    "SpongyEnemies", 
-                    "DeathCounter", 
-                    "CheckpointRemovalHandler", 
-                    "PermanentStorageHandler"
+	EventHandlers = "SLL_ScoreHandler",         // Handles game score
+                    "LastWeaponHandler",        // Handles the "Last Used Weapon" key
+                    "CyberSpaceArenaHandler",   // Handles removing enemy corpses from Cyber Space Arena
+                    "EnemiesBleedRings",        // Handles the "Enemies Bleed Rings" gameplay modifier
+                    "StyleSystem",              // Handles the ZScript aspects of the style system
+                    "SpongyEnemies",            // Handles the "Spongy Enemies" gameplay modifier
+                    "CheckpointRemovalHandler", // Handles removing checkpoints from the levels if disabled
+                    "PermanentStorageHandler"   // Handles permanent storage of game progress and weapons
 	StatusBarClass = "SLL_StatusBar"
 }
 
