@@ -1,3 +1,7 @@
+
+> [!CAUTION]
+> This repository is **DEPRECATED** and will no longer be updated. For up-to-date versions of Sonic: Lock & Load and surrounding repositories, see the [Codeberg organisation.](https://codeberg.org/Sonic-LockandLoad)
+
 <h1 align=center>Welcome to Sonic: Lock & Load!</h1>
 <p align=center><a href="https://github.com/Sonic-LockandLoad/Sonic-LockandLoad/releases">Downloads</a> | <a href="https://sonic-lockandload.github.io">Website</a> | <a href="https://forum.zdoom.org/viewtopic.php?f=19&t=72593">ZDoom Forum page</a> | <a href="https://sonicfangameshq.com/forums/showcase/sonic-lock-load.1199">SFGHQ Showcase page</a></p>
 <p align=center><img src="https://raw.githubusercontent.com/Sonic-LockandLoad/Sonic-LockandLoad/edge/Graphics/LOGO.png" width=400px /></p>
